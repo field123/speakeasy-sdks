@@ -57,8 +57,8 @@ Create a job
 ### Example Usage
 
 ```typescript
-import { SDK } from "openapi";
-import { JobType, SubscriptionJobType } from "openapi/models/components";
+import { SDK } from "service-subscriptions-sdk";
+import { JobType, SubscriptionJobType } from "service-subscriptions-sdk/models/components";
 
 async function run() {
   const sdk = new SDK({
@@ -112,7 +112,7 @@ List jobs
 ### Example Usage
 
 ```typescript
-import { SDK } from "openapi";
+import { SDK } from "service-subscriptions-sdk";
 
 async function run() {
   const sdk = new SDK({
@@ -160,7 +160,7 @@ Get job
 ### Example Usage
 
 ```typescript
-import { SDK } from "openapi";
+import { SDK } from "service-subscriptions-sdk";
 
 async function run() {
   const sdk = new SDK({
@@ -204,7 +204,7 @@ Delete job
 ### Example Usage
 
 ```typescript
-import { SDK } from "openapi";
+import { SDK } from "service-subscriptions-sdk";
 
 async function run() {
   const sdk = new SDK({

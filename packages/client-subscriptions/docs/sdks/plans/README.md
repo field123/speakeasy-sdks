@@ -54,8 +54,8 @@ Create a plan
 ### Example Usage
 
 ```typescript
-import { SDK } from "openapi";
-import { BillingIntervalType, EndBehavior, PlanAttributesStatus, SubscriptionPlanType } from "openapi/models/components";
+import { SDK } from "service-subscriptions-sdk";
+import { BillingIntervalType, EndBehavior, PlanAttributesStatus, SubscriptionPlanType } from "service-subscriptions-sdk/models/components";
 
 async function run() {
   const sdk = new SDK({
@@ -128,7 +128,7 @@ List plans
 ### Example Usage
 
 ```typescript
-import { SDK } from "openapi";
+import { SDK } from "service-subscriptions-sdk";
 
 async function run() {
   const sdk = new SDK({
@@ -174,7 +174,7 @@ Get plan
 ### Example Usage
 
 ```typescript
-import { SDK } from "openapi";
+import { SDK } from "service-subscriptions-sdk";
 
 async function run() {
   const sdk = new SDK({
@@ -218,7 +218,7 @@ You must not delete a plan if it is associated with an offering as this invalida
 ### Example Usage
 
 ```typescript
-import { SDK } from "openapi";
+import { SDK } from "service-subscriptions-sdk";
 
 async function run() {
   const sdk = new SDK({
@@ -261,13 +261,13 @@ Specify whichever attributes you want to change. The values of the other attribu
 ### Example Usage
 
 ```typescript
-import { SDK } from "openapi";
+import { SDK } from "service-subscriptions-sdk";
 import {
   PlanUpdateAttributesBillingIntervalType,
   PlanUpdateAttributesEndBehavior,
   PlanUpdateAttributesStatus,
   SubscriptionPlanType,
-} from "openapi/models/components";
+} from "service-subscriptions-sdk/models/components";
 
 async function run() {
   const sdk = new SDK({

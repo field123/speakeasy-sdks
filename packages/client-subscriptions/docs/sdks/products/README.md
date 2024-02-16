@@ -37,8 +37,8 @@ Create a product
 ### Example Usage
 
 ```typescript
-import { SDK } from "openapi";
-import { SubscriptionProductType, Unit } from "openapi/models/components";
+import { SDK } from "service-subscriptions-sdk";
+import { SubscriptionProductType, Unit } from "service-subscriptions-sdk/models/components";
 
 async function run() {
   const sdk = new SDK({
@@ -109,7 +109,7 @@ List products
 ### Example Usage
 
 ```typescript
-import { SDK } from "openapi";
+import { SDK } from "service-subscriptions-sdk";
 
 async function run() {
   const sdk = new SDK({
@@ -157,7 +157,7 @@ Get product
 ### Example Usage
 
 ```typescript
-import { SDK } from "openapi";
+import { SDK } from "service-subscriptions-sdk";
 
 async function run() {
   const sdk = new SDK({
@@ -201,7 +201,7 @@ You cannot delete a product if it is part of an offering. You must detach the pr
 ### Example Usage
 
 ```typescript
-import { SDK } from "openapi";
+import { SDK } from "service-subscriptions-sdk";
 
 async function run() {
   const sdk = new SDK({
@@ -245,8 +245,8 @@ Specify whichever attributes you want to change. The values of the other attribu
 ### Example Usage
 
 ```typescript
-import { SDK } from "openapi";
-import { NullablePriceUnitsUnit, SubscriptionProductType } from "openapi/models/components";
+import { SDK } from "service-subscriptions-sdk";
+import { NullablePriceUnitsUnit, SubscriptionProductType } from "service-subscriptions-sdk/models/components";
 
 async function run() {
   const sdk = new SDK({

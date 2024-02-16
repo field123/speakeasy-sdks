@@ -75,8 +75,8 @@ Create an offering
 ### Example Usage
 
 ```typescript
-import { SDK } from "openapi";
-import { SubscriptionOfferingType } from "openapi/models/components";
+import { SDK } from "service-subscriptions-sdk";
+import { SubscriptionOfferingType } from "service-subscriptions-sdk/models/components";
 
 async function run() {
   const sdk = new SDK({
@@ -142,7 +142,7 @@ List offerings
 ### Example Usage
 
 ```typescript
-import { SDK } from "openapi";
+import { SDK } from "service-subscriptions-sdk";
 
 async function run() {
   const sdk = new SDK({
@@ -190,8 +190,8 @@ Build an offering
 ### Example Usage
 
 ```typescript
-import { SDK } from "openapi";
-import { Unit } from "openapi/models/components";
+import { SDK } from "service-subscriptions-sdk";
+import { Unit } from "service-subscriptions-sdk/models/components";
 
 async function run() {
   const sdk = new SDK({
@@ -265,7 +265,7 @@ Get offering
 ### Example Usage
 
 ```typescript
-import { SDK } from "openapi";
+import { SDK } from "service-subscriptions-sdk";
 
 async function run() {
   const sdk = new SDK({
@@ -309,7 +309,7 @@ When a subscription is created, it creates a snapshot of the offering. This mean
 ### Example Usage
 
 ```typescript
-import { SDK } from "openapi";
+import { SDK } from "service-subscriptions-sdk";
 
 async function run() {
   const sdk = new SDK({
@@ -354,8 +354,8 @@ After saving an offering, you can update an offering at any time. Updating an of
 ### Example Usage
 
 ```typescript
-import { SDK } from "openapi";
-import { SubscriptionOfferingType } from "openapi/models/components";
+import { SDK } from "service-subscriptions-sdk";
+import { SubscriptionOfferingType } from "service-subscriptions-sdk/models/components";
 
 async function run() {
   const sdk = new SDK({
@@ -411,7 +411,7 @@ List an offering's plans
 ### Example Usage
 
 ```typescript
-import { SDK } from "openapi";
+import { SDK } from "service-subscriptions-sdk";
 
 async function run() {
   const sdk = new SDK({
@@ -462,7 +462,7 @@ Attaching new plans to an offering does not affect any existing active subscript
 ### Example Usage
 
 ```typescript
-import { SDK } from "openapi";
+import { SDK } from "service-subscriptions-sdk";
 
 async function run() {
   const sdk = new SDK({
@@ -514,13 +514,13 @@ Updates a plan in an offering
 ### Example Usage
 
 ```typescript
-import { SDK } from "openapi";
+import { SDK } from "service-subscriptions-sdk";
 import {
   PlanUpdateAttributesBillingIntervalType,
   PlanUpdateAttributesEndBehavior,
   PlanUpdateAttributesStatus,
   SubscriptionOfferingPlanType,
-} from "openapi/models/components";
+} from "service-subscriptions-sdk/models/components";
 
 async function run() {
   const sdk = new SDK({
@@ -603,7 +603,7 @@ Removing a plan from an offering does not affect any existing active subscriptio
 ### Example Usage
 
 ```typescript
-import { SDK } from "openapi";
+import { SDK } from "service-subscriptions-sdk";
 
 async function run() {
   const sdk = new SDK({
@@ -649,7 +649,7 @@ List an offering's products
 ### Example Usage
 
 ```typescript
-import { SDK } from "openapi";
+import { SDK } from "service-subscriptions-sdk";
 
 async function run() {
   const sdk = new SDK({
@@ -700,7 +700,7 @@ Adding new products does not affect any existing active subscriptions. The chang
 ### Example Usage
 
 ```typescript
-import { SDK } from "openapi";
+import { SDK } from "service-subscriptions-sdk";
 
 async function run() {
   const sdk = new SDK({
@@ -752,8 +752,8 @@ Use the unique identifier of the product in the offering that you want to update
 ### Example Usage
 
 ```typescript
-import { SDK } from "openapi";
-import { NullablePriceUnitsUnit, SubscriptionOfferingProductType } from "openapi/models/components";
+import { SDK } from "service-subscriptions-sdk";
+import { NullablePriceUnitsUnit, SubscriptionOfferingProductType } from "service-subscriptions-sdk/models/components";
 
 async function run() {
   const sdk = new SDK({
@@ -830,7 +830,7 @@ After saving an offering, you can remove products from it at any time.
 ### Example Usage
 
 ```typescript
-import { SDK } from "openapi";
+import { SDK } from "service-subscriptions-sdk";
 
 async function run() {
   const sdk = new SDK({

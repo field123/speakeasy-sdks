@@ -1,7 +1,7 @@
 <!-- Start SDK Example Usage [usage] -->
 ```typescript
-import { SDK } from "openapi";
-import { SubscriptionProductType, Unit } from "openapi/models/components";
+import { SDK } from "service-subscriptions-sdk";
+import { SubscriptionProductType, Unit } from "service-subscriptions-sdk/models/components";
 
 async function run() {
     const sdk = new SDK({

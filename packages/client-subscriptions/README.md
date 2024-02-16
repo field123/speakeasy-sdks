@@ -44,8 +44,8 @@ For supported JavaScript runtimes, please consult [RUNTIMES.md](RUNTIMES.md).
 ### Example
 
 ```typescript
-import { SDK } from "openapi";
-import { SubscriptionProductType, Unit } from "openapi/models/components";
+import { SDK } from "service-subscriptions-sdk";
+import { SubscriptionProductType, Unit } from "service-subscriptions-sdk/models/components";
 
 async function run() {
     const sdk = new SDK({
@@ -176,8 +176,8 @@ All SDK methods return a response object or throw an error. If Error objects are
 Example
 
 ```typescript
-import { SDK } from "openapi";
-import { SubscriptionProductType, Unit } from "openapi/models/components";
+import { SDK } from "service-subscriptions-sdk";
+import { SubscriptionProductType, Unit } from "service-subscriptions-sdk/models/components";
 
 async function run() {
     const sdk = new SDK({
@@ -251,8 +251,8 @@ You can override the default server globally by passing a server index to the `s
 | 3 | `https://useast.api.elasticpath.com/v2` | None |
 
 ```typescript
-import { SDK } from "openapi";
-import { SubscriptionProductType, Unit } from "openapi/models/components";
+import { SDK } from "service-subscriptions-sdk";
+import { SubscriptionProductType, Unit } from "service-subscriptions-sdk/models/components";
 
 async function run() {
     const sdk = new SDK({
@@ -304,8 +304,8 @@ run();
 The default server can also be overridden globally by passing a URL to the `serverURL` optional parameter when initializing the SDK client instance. For example:
 
 ```typescript
-import { SDK } from "openapi";
-import { SubscriptionProductType, Unit } from "openapi/models/components";
+import { SDK } from "service-subscriptions-sdk";
+import { SubscriptionProductType, Unit } from "service-subscriptions-sdk/models/components";
 
 async function run() {
     const sdk = new SDK({
@@ -370,8 +370,8 @@ custom header and a timeout to requests and how to use the `"requestError"` hook
 to log errors:
 
 ```typescript
-import { SDK } from "openapi";
-import { HTTPClient } from "openapi/lib/http";
+import { SDK } from "service-subscriptions-sdk";
+import { HTTPClient } from "service-subscriptions-sdk/lib/http";
 
 const httpClient = new HTTPClient({
   // fetcher takes a function that has the same signature as native `fetch`.
@@ -414,8 +414,8 @@ This SDK supports the following security scheme globally:
 
 To authenticate with the API the `bearerToken` parameter must be set when initializing the SDK client instance. For example:
 ```typescript
-import { SDK } from "openapi";
-import { SubscriptionProductType, Unit } from "openapi/models/components";
+import { SDK } from "service-subscriptions-sdk";
+import { SubscriptionProductType, Unit } from "service-subscriptions-sdk/models/components";
 
 async function run() {
     const sdk = new SDK({

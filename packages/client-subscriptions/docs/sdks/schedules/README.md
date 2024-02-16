@@ -90,7 +90,7 @@ List schedules
 ### Example Usage
 
 ```typescript
-import { SDK } from "openapi";
+import { SDK } from "service-subscriptions-sdk";
 
 async function run() {
   const sdk = new SDK({
@@ -134,8 +134,8 @@ Create a schedule
 ### Example Usage
 
 ```typescript
-import { SDK } from "openapi";
-import { JobType, SubscriptionScheduleType } from "openapi/models/components";
+import { SDK } from "service-subscriptions-sdk";
+import { JobType, SubscriptionScheduleType } from "service-subscriptions-sdk/models/components";
 
 async function run() {
   const sdk = new SDK({
@@ -194,7 +194,7 @@ Get a schedule
 ### Example Usage
 
 ```typescript
-import { SDK } from "openapi";
+import { SDK } from "service-subscriptions-sdk";
 
 async function run() {
   const sdk = new SDK({
@@ -238,8 +238,8 @@ Update a schedule
 ### Example Usage
 
 ```typescript
-import { SDK } from "openapi";
-import { JobType, SubscriptionScheduleType } from "openapi/models/components";
+import { SDK } from "service-subscriptions-sdk";
+import { JobType, SubscriptionScheduleType } from "service-subscriptions-sdk/models/components";
 
 async function run() {
   const sdk = new SDK({
@@ -299,7 +299,7 @@ Delete schedule
 ### Example Usage
 
 ```typescript
-import { SDK } from "openapi";
+import { SDK } from "service-subscriptions-sdk";
 
 async function run() {
   const sdk = new SDK({

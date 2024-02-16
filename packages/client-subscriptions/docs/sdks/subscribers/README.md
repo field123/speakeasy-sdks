@@ -21,7 +21,7 @@ List subscribers
 ### Example Usage
 
 ```typescript
-import { SDK } from "openapi";
+import { SDK } from "service-subscriptions-sdk";
 
 async function run() {
   const sdk = new SDK({
@@ -69,8 +69,8 @@ Create a subscriber
 ### Example Usage
 
 ```typescript
-import { SDK } from "openapi";
-import { SubscriptionSubscriberType } from "openapi/models/components";
+import { SDK } from "service-subscriptions-sdk";
+import { SubscriptionSubscriberType } from "service-subscriptions-sdk/models/components";
 
 async function run() {
   const sdk = new SDK({
@@ -125,7 +125,7 @@ Get a subscriber
 ### Example Usage
 
 ```typescript
-import { SDK } from "openapi";
+import { SDK } from "service-subscriptions-sdk";
 
 async function run() {
   const sdk = new SDK({
@@ -169,8 +169,8 @@ Update a subscriber
 ### Example Usage
 
 ```typescript
-import { SDK } from "openapi";
-import { SubscriptionSubscriberType } from "openapi/models/components";
+import { SDK } from "service-subscriptions-sdk";
+import { SubscriptionSubscriberType } from "service-subscriptions-sdk/models/components";
 
 async function run() {
   const sdk = new SDK({
@@ -225,7 +225,7 @@ Delete subscriber
 ### Example Usage
 
 ```typescript
-import { SDK } from "openapi";
+import { SDK } from "service-subscriptions-sdk";
 
 async function run() {
   const sdk = new SDK({

@@ -1,7 +1,7 @@
 {
   "type": "commonjs",
-  "name": "@elasticpath/service-subscriptions-sdk",
-  "version": "0.0.1",
+  "name": "service-subscriptions-sdk",
+  "version": "0.0.2",
   "author": "Speakeasy",
   "main": "./index.js",
   "sideEffects": false,
