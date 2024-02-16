@@ -11,9 +11,9 @@ import { Plans } from "./plans";
 import { Products } from "./products";
 import { Schedules } from "./schedules";
 import { Subscribers } from "./subscribers";
-import { Subscriptions } from "./subscriptions";
+import { SubscriptionsSDK } from "./subscriptionssdk";
 
-export class SDK extends ClientSDK {
+export class Subscriptions extends ClientSDK {
     private readonly options$: SDKOptions;
 
     constructor(options: SDKOptions = {}) {
@@ -41,9 +41,9 @@ export class SDK extends ClientSDK {
         return (this._offerings ??= new Offerings(this.options$));
     }
 
-    private _subscriptions?: Subscriptions;
-    get subscriptions() {
-        return (this._subscriptions ??= new Subscriptions(this.options$));
+    private _subscriptionsSDK?: SubscriptionsSDK;
+    get subscriptionsSDK() {
+        return (this._subscriptionsSDK ??= new SubscriptionsSDK(this.options$));
     }
 
     private _jobs?: Jobs;

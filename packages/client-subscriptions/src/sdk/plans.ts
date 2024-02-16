@@ -91,19 +91,14 @@ export class Plans extends ClientSDK {
      * List plans
      */
     async listPlans(
-        pageOffset?: number | undefined,
-        pageLimit?: number | undefined,
+        input: operations.ListPlansRequest,
         options?: RequestOptions
     ): Promise<operations.ListPlansResponse> {
-        const input$: operations.ListPlansRequest = {
-            pageOffset: pageOffset,
-            pageLimit: pageLimit,
-        };
         const headers$ = new Headers();
         headers$.set("user-agent", SDK_METADATA.userAgent);
         headers$.set("Accept", "application/json");
 
-        const payload$ = operations.ListPlansRequest$.outboundSchema.parse(input$);
+        const payload$ = operations.ListPlansRequest$.outboundSchema.parse(input);
         const body$ = null;
 
         const path$ = this.templateURLComponent("/subscriptions/plans")();
@@ -172,15 +167,15 @@ export class Plans extends ClientSDK {
     /**
      * Get plan
      */
-    async getPlan(planUuid: string, options?: RequestOptions): Promise<operations.GetPlanResponse> {
-        const input$: operations.GetPlanRequest = {
-            planUuid: planUuid,
-        };
+    async getPlan(
+        input: operations.GetPlanRequest,
+        options?: RequestOptions
+    ): Promise<operations.GetPlanResponse> {
         const headers$ = new Headers();
         headers$.set("user-agent", SDK_METADATA.userAgent);
         headers$.set("Accept", "application/json");
 
-        const payload$ = operations.GetPlanRequest$.outboundSchema.parse(input$);
+        const payload$ = operations.GetPlanRequest$.outboundSchema.parse(input);
         const body$ = null;
 
         const pathParams$ = {
@@ -246,17 +241,14 @@ export class Plans extends ClientSDK {
      * You must not delete a plan if it is associated with an offering as this invalidates the offering. You must detach a plan from an offering before deleting it.
      */
     async deletePlan(
-        planUuid: string,
+        input: operations.DeletePlanRequest,
         options?: RequestOptions
     ): Promise<operations.DeletePlanResponse> {
-        const input$: operations.DeletePlanRequest = {
-            planUuid: planUuid,
-        };
         const headers$ = new Headers();
         headers$.set("user-agent", SDK_METADATA.userAgent);
         headers$.set("Accept", "*/*");
 
-        const payload$ = operations.DeletePlanRequest$.outboundSchema.parse(input$);
+        const payload$ = operations.DeletePlanRequest$.outboundSchema.parse(input);
         const body$ = null;
 
         const pathParams$ = {
@@ -312,20 +304,15 @@ export class Plans extends ClientSDK {
      * Specify whichever attributes you want to change. The values of the other attributes remain the same. If the attributes section is empty, the plan is not updated.
      */
     async updatePlan(
-        planUuid: string,
-        requestBody?: operations.UpdatePlanRequestBody | undefined,
+        input: operations.UpdatePlanRequest,
         options?: RequestOptions
     ): Promise<operations.UpdatePlanResponse> {
-        const input$: operations.UpdatePlanRequest = {
-            planUuid: planUuid,
-            requestBody: requestBody,
-        };
         const headers$ = new Headers();
         headers$.set("user-agent", SDK_METADATA.userAgent);
         headers$.set("Content-Type", "application/json");
         headers$.set("Accept", "application/json");
 
-        const payload$ = operations.UpdatePlanRequest$.outboundSchema.parse(input$);
+        const payload$ = operations.UpdatePlanRequest$.outboundSchema.parse(input);
 
         const body$ = enc$.encodeJSON("body", payload$.RequestBody, { explode: true });
 

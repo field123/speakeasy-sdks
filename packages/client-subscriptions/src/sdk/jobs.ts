@@ -26,20 +26,15 @@ export class Jobs extends ClientSDK {
      * Create a job
      */
     async createJob(
-        filter?: string | undefined,
-        requestBody?: operations.CreateJobRequestBody | undefined,
+        input: operations.CreateJobRequest,
         options?: RequestOptions
     ): Promise<operations.CreateJobResponse> {
-        const input$: operations.CreateJobRequest = {
-            filter: filter,
-            requestBody: requestBody,
-        };
         const headers$ = new Headers();
         headers$.set("user-agent", SDK_METADATA.userAgent);
         headers$.set("Content-Type", "application/json");
         headers$.set("Accept", "application/json");
 
-        const payload$ = operations.CreateJobRequest$.outboundSchema.parse(input$);
+        const payload$ = operations.CreateJobRequest$.outboundSchema.parse(input);
 
         const body$ = enc$.encodeJSON("body", payload$.RequestBody, { explode: true });
 
@@ -103,21 +98,14 @@ export class Jobs extends ClientSDK {
      * List jobs
      */
     async listJobs(
-        filter?: string | undefined,
-        pageOffset?: number | undefined,
-        pageLimit?: number | undefined,
+        input: operations.ListJobsRequest,
         options?: RequestOptions
     ): Promise<operations.ListJobsResponse> {
-        const input$: operations.ListJobsRequest = {
-            filter: filter,
-            pageOffset: pageOffset,
-            pageLimit: pageLimit,
-        };
         const headers$ = new Headers();
         headers$.set("user-agent", SDK_METADATA.userAgent);
         headers$.set("Accept", "application/json");
 
-        const payload$ = operations.ListJobsRequest$.outboundSchema.parse(input$);
+        const payload$ = operations.ListJobsRequest$.outboundSchema.parse(input);
         const body$ = null;
 
         const path$ = this.templateURLComponent("/subscriptions/jobs")();
@@ -187,15 +175,15 @@ export class Jobs extends ClientSDK {
     /**
      * Get job
      */
-    async getJob(jobUuid: string, options?: RequestOptions): Promise<operations.GetJobResponse> {
-        const input$: operations.GetJobRequest = {
-            jobUuid: jobUuid,
-        };
+    async getJob(
+        input: operations.GetJobRequest,
+        options?: RequestOptions
+    ): Promise<operations.GetJobResponse> {
         const headers$ = new Headers();
         headers$.set("user-agent", SDK_METADATA.userAgent);
         headers$.set("Accept", "application/json");
 
-        const payload$ = operations.GetJobRequest$.outboundSchema.parse(input$);
+        const payload$ = operations.GetJobRequest$.outboundSchema.parse(input);
         const body$ = null;
 
         const pathParams$ = {
@@ -258,17 +246,14 @@ export class Jobs extends ClientSDK {
      * Delete job
      */
     async deleteJob(
-        jobUuid: string,
+        input: operations.DeleteJobRequest,
         options?: RequestOptions
     ): Promise<operations.DeleteJobResponse> {
-        const input$: operations.DeleteJobRequest = {
-            jobUuid: jobUuid,
-        };
         const headers$ = new Headers();
         headers$.set("user-agent", SDK_METADATA.userAgent);
         headers$.set("Accept", "application/json");
 
-        const payload$ = operations.DeleteJobRequest$.outboundSchema.parse(input$);
+        const payload$ = operations.DeleteJobRequest$.outboundSchema.parse(input);
         const body$ = null;
 
         const pathParams$ = {

@@ -23,6 +23,9 @@ importers:
 
   apps/sdk-tester:
     dependencies:
+      '@field123/service-subscriptions-sdk':
+        specifier: workspace:*
+        version: link:../../packages/client-subscriptions
       next:
         specifier: 14.1.0
         version: 14.1.0(react-dom@18.2.0)(react@18.2.0)
@@ -32,9 +35,6 @@ importers:
       react-dom:
         specifier: ^18
         version: 18.2.0(react@18.2.0)
-      service-subscriptions-sdk:
-        specifier: workspace:*
-        version: link:../../packages/client-subscriptions
       zod:
         specifier: ^3.22.4
         version: 3.22.4

@@ -90,16 +90,16 @@ List schedules
 ### Example Usage
 
 ```typescript
-import { SDK } from "service-subscriptions-sdk";
+import { Subscriptions } from "@field123/service-subscriptions-sdk";
 
 async function run() {
-  const sdk = new SDK({
+  const sdk = new Subscriptions({
     bearerToken: "<YOUR_BEARER_TOKEN_HERE>",
   });
 
-  const filter = "eq(name,Alan Turing)";
-  
-  const result = await sdk.schedules.listSchedules(filter);
+  const result = await sdk.schedules.listSchedules({
+    filter: "eq(name,Alan Turing)",
+  });
 
   // Handle the result
   console.log(result)
@@ -110,11 +110,11 @@ run();
 
 ### Parameters
 
-| Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    | Example                                                                                                                                                                        |
-| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| `filter`                                                                                                                                                                       | *string*                                                                                                                                                                       | :heavy_minus_sign:                                                                                                                                                             | N/A                                                                                                                                                                            | [object Object]                                                                                                                                                                |
-| `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |                                                                                                                                                                                |
-| `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |                                                                                                                                                                                |
+| Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
+| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `request`                                                                                                                                                                      | [operations.ListSchedulesRequest](../../models/operations/listschedulesrequest.md)                                                                                             | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
+| `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
+| `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
 
 
 ### Response
@@ -134,31 +134,31 @@ Create a schedule
 ### Example Usage
 
 ```typescript
-import { SDK } from "service-subscriptions-sdk";
-import { JobType, SubscriptionScheduleType } from "service-subscriptions-sdk/models/components";
+import { Subscriptions } from "@field123/service-subscriptions-sdk";
+import { JobType, SubscriptionScheduleType } from "@field123/service-subscriptions-sdk/models/components";
 
 async function run() {
-  const sdk = new SDK({
+  const sdk = new Subscriptions({
     bearerToken: "<YOUR_BEARER_TOKEN_HERE>",
   });
 
-  const filter = "eq(name,Alan Turing)";
-  const requestBody = {
-    data: {
-      type: SubscriptionScheduleType.SubscriptionSchedule,
-      attributes: {
-        externalRef: "abc123",
-        name: "Daily billing run.",
-        specification: "30 0 * * *",
-        location: "Europe/London",
-        job: {
-          jobType: JobType.BillingRun,
+  const result = await sdk.schedules.createSchedule({
+    filter: "eq(name,Alan Turing)",
+    requestBody: {
+      data: {
+        type: SubscriptionScheduleType.SubscriptionSchedule,
+        attributes: {
+          externalRef: "abc123",
+          name: "Daily billing run.",
+          specification: "30 0 * * *",
+          location: "Europe/London",
+          job: {
+            jobType: JobType.BillingRun,
+          },
         },
       },
     },
-  };
-  
-  const result = await sdk.schedules.createSchedule(filter, requestBody);
+  });
 
   // Handle the result
   console.log(result)
@@ -169,12 +169,11 @@ run();
 
 ### Parameters
 
-| Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    | Example                                                                                                                                                                        |
-| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| `filter`                                                                                                                                                                       | *string*                                                                                                                                                                       | :heavy_minus_sign:                                                                                                                                                             | N/A                                                                                                                                                                            | [object Object]                                                                                                                                                                |
-| `requestBody`                                                                                                                                                                  | [operations.CreateScheduleRequestBody](../../models/operations/createschedulerequestbody.md)                                                                                   | :heavy_minus_sign:                                                                                                                                                             | N/A                                                                                                                                                                            |                                                                                                                                                                                |
-| `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |                                                                                                                                                                                |
-| `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |                                                                                                                                                                                |
+| Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
+| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `request`                                                                                                                                                                      | [operations.CreateScheduleRequest](../../models/operations/createschedulerequest.md)                                                                                           | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
+| `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
+| `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
 
 
 ### Response
@@ -194,16 +193,16 @@ Get a schedule
 ### Example Usage
 
 ```typescript
-import { SDK } from "service-subscriptions-sdk";
+import { Subscriptions } from "@field123/service-subscriptions-sdk";
 
 async function run() {
-  const sdk = new SDK({
+  const sdk = new Subscriptions({
     bearerToken: "<YOUR_BEARER_TOKEN_HERE>",
   });
 
-  const scheduleUuid = "00000000-0000-0000-0000-000000000000";
-  
-  const result = await sdk.schedules.getSchedule(scheduleUuid);
+  const result = await sdk.schedules.getSchedule({
+    scheduleUuid: "00000000-0000-0000-0000-000000000000",
+  });
 
   // Handle the result
   console.log(result)
@@ -214,11 +213,11 @@ run();
 
 ### Parameters
 
-| Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    | Example                                                                                                                                                                        |
-| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| `scheduleUuid`                                                                                                                                                                 | *string*                                                                                                                                                                       | :heavy_check_mark:                                                                                                                                                             | The unique identifier of the schedule.                                                                                                                                         | [object Object]                                                                                                                                                                |
-| `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |                                                                                                                                                                                |
-| `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |                                                                                                                                                                                |
+| Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
+| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `request`                                                                                                                                                                      | [operations.GetScheduleRequest](../../models/operations/getschedulerequest.md)                                                                                                 | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
+| `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
+| `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
 
 
 ### Response
@@ -238,32 +237,32 @@ Update a schedule
 ### Example Usage
 
 ```typescript
-import { SDK } from "service-subscriptions-sdk";
-import { JobType, SubscriptionScheduleType } from "service-subscriptions-sdk/models/components";
+import { Subscriptions } from "@field123/service-subscriptions-sdk";
+import { JobType, SubscriptionScheduleType } from "@field123/service-subscriptions-sdk/models/components";
 
 async function run() {
-  const sdk = new SDK({
+  const sdk = new Subscriptions({
     bearerToken: "<YOUR_BEARER_TOKEN_HERE>",
   });
 
-  const scheduleUuid = "00000000-0000-0000-0000-000000000000";
-  const requestBody = {
-    data: {
-      id: "00000000-0000-0000-0000-000000000000",
-      type: SubscriptionScheduleType.SubscriptionSchedule,
-      attributes: {
-        externalRef: "abc123",
-        name: "Daily billing run.",
-        specification: "30 0 * * *",
-        location: "Europe/London",
-        job: {
-          jobType: JobType.BillingRun,
+  const result = await sdk.schedules.updateSchedule({
+    scheduleUuid: "00000000-0000-0000-0000-000000000000",
+    requestBody: {
+      data: {
+        id: "00000000-0000-0000-0000-000000000000",
+        type: SubscriptionScheduleType.SubscriptionSchedule,
+        attributes: {
+          externalRef: "abc123",
+          name: "Daily billing run.",
+          specification: "30 0 * * *",
+          location: "Europe/London",
+          job: {
+            jobType: JobType.BillingRun,
+          },
         },
       },
     },
-  };
-  
-  const result = await sdk.schedules.updateSchedule(scheduleUuid, requestBody);
+  });
 
   // Handle the result
   console.log(result)
@@ -274,12 +273,11 @@ run();
 
 ### Parameters
 
-| Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    | Example                                                                                                                                                                        |
-| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| `scheduleUuid`                                                                                                                                                                 | *string*                                                                                                                                                                       | :heavy_check_mark:                                                                                                                                                             | The unique identifier of the schedule.                                                                                                                                         | [object Object]                                                                                                                                                                |
-| `requestBody`                                                                                                                                                                  | [operations.UpdateScheduleRequestBody](../../models/operations/updateschedulerequestbody.md)                                                                                   | :heavy_minus_sign:                                                                                                                                                             | N/A                                                                                                                                                                            |                                                                                                                                                                                |
-| `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |                                                                                                                                                                                |
-| `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |                                                                                                                                                                                |
+| Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
+| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `request`                                                                                                                                                                      | [operations.UpdateScheduleRequest](../../models/operations/updateschedulerequest.md)                                                                                           | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
+| `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
+| `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
 
 
 ### Response
@@ -299,16 +297,16 @@ Delete schedule
 ### Example Usage
 
 ```typescript
-import { SDK } from "service-subscriptions-sdk";
+import { Subscriptions } from "@field123/service-subscriptions-sdk";
 
 async function run() {
-  const sdk = new SDK({
+  const sdk = new Subscriptions({
     bearerToken: "<YOUR_BEARER_TOKEN_HERE>",
   });
 
-  const scheduleUuid = "00000000-0000-0000-0000-000000000000";
-  
-  const result = await sdk.schedules.deleteSchedule(scheduleUuid);
+  const result = await sdk.schedules.deleteSchedule({
+    scheduleUuid: "00000000-0000-0000-0000-000000000000",
+  });
 
   // Handle the result
   console.log(result)
@@ -319,11 +317,11 @@ run();
 
 ### Parameters
 
-| Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    | Example                                                                                                                                                                        |
-| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| `scheduleUuid`                                                                                                                                                                 | *string*                                                                                                                                                                       | :heavy_check_mark:                                                                                                                                                             | The unique identifier of the schedule.                                                                                                                                         | [object Object]                                                                                                                                                                |
-| `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |                                                                                                                                                                                |
-| `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |                                                                                                                                                                                |
+| Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
+| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `request`                                                                                                                                                                      | [operations.DeleteScheduleRequest](../../models/operations/deleteschedulerequest.md)                                                                                           | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
+| `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
+| `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
 
 
 ### Response

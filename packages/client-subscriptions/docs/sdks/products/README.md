@@ -37,43 +37,43 @@ Create a product
 ### Example Usage
 
 ```typescript
-import { SDK } from "service-subscriptions-sdk";
-import { SubscriptionProductType, Unit } from "service-subscriptions-sdk/models/components";
+import { Subscriptions } from "@field123/service-subscriptions-sdk";
+import { SubscriptionProductType, Unit } from "@field123/service-subscriptions-sdk/models/components";
 
 async function run() {
-  const sdk = new SDK({
+  const sdk = new Subscriptions({
     bearerToken: "<YOUR_BEARER_TOKEN_HERE>",
   });
 
-  const filter = "eq(name,Alan Turing)";
-  const requestBody = {
-    data: {
-      type: SubscriptionProductType.SubscriptionProduct,
-      attributes: {
-        externalRef: "abc123",
-        name: "Magazine",
-        description: "A lovely magazine that is published every month.",
-        sku: "MAGAZINE1",
-        mainImage: "https://magazine.com/cover.jpg",
-        price: {
-          "USD": {
-            amount: 100,
-            includesTax: false,
+  const result = await sdk.products.createProduct({
+    filter: "eq(name,Alan Turing)",
+    requestBody: {
+      data: {
+        type: SubscriptionProductType.SubscriptionProduct,
+        attributes: {
+          externalRef: "abc123",
+          name: "Magazine",
+          description: "A lovely magazine that is published every month.",
+          sku: "MAGAZINE1",
+          mainImage: "https://magazine.com/cover.jpg",
+          price: {
+            "USD": {
+              amount: 100,
+              includesTax: false,
+            },
+            "GBP": {
+              amount: 90,
+              includesTax: true,
+            },
           },
-          "GBP": {
-            amount: 90,
-            includesTax: true,
+          priceUnits: {
+            unit: Unit.Day,
+            amount: 7,
           },
-        },
-        priceUnits: {
-          unit: Unit.Day,
-          amount: 7,
         },
       },
     },
-  };
-  
-  const result = await sdk.products.createProduct(filter, requestBody);
+  });
 
   // Handle the result
   console.log(result)
@@ -84,12 +84,11 @@ run();
 
 ### Parameters
 
-| Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    | Example                                                                                                                                                                        |
-| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| `filter`                                                                                                                                                                       | *string*                                                                                                                                                                       | :heavy_minus_sign:                                                                                                                                                             | N/A                                                                                                                                                                            | [object Object]                                                                                                                                                                |
-| `requestBody`                                                                                                                                                                  | [operations.CreateProductRequestBody](../../models/operations/createproductrequestbody.md)                                                                                     | :heavy_minus_sign:                                                                                                                                                             | N/A                                                                                                                                                                            |                                                                                                                                                                                |
-| `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |                                                                                                                                                                                |
-| `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |                                                                                                                                                                                |
+| Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
+| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `request`                                                                                                                                                                      | [operations.CreateProductRequest](../../models/operations/createproductrequest.md)                                                                                             | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
+| `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
+| `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
 
 
 ### Response
@@ -109,18 +108,18 @@ List products
 ### Example Usage
 
 ```typescript
-import { SDK } from "service-subscriptions-sdk";
+import { Subscriptions } from "@field123/service-subscriptions-sdk";
 
 async function run() {
-  const sdk = new SDK({
+  const sdk = new Subscriptions({
     bearerToken: "<YOUR_BEARER_TOKEN_HERE>",
   });
 
-  const filter = "eq(name,Alan Turing)";
-  const pageOffset = 10;
-  const pageLimit = 100;
-  
-  const result = await sdk.products.listProducts(filter, pageOffset, pageLimit);
+  const result = await sdk.products.listProducts({
+    filter: "eq(name,Alan Turing)",
+    pageOffset: 10,
+    pageLimit: 100,
+  });
 
   // Handle the result
   console.log(result)
@@ -131,13 +130,11 @@ run();
 
 ### Parameters
 
-| Parameter                                                                                                                                                                                                                                                                                   | Type                                                                                                                                                                                                                                                                                        | Required                                                                                                                                                                                                                                                                                    | Description                                                                                                                                                                                                                                                                                 | Example                                                                                                                                                                                                                                                                                     |
-| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `filter`                                                                                                                                                                                                                                                                                    | *string*                                                                                                                                                                                                                                                                                    | :heavy_minus_sign:                                                                                                                                                                                                                                                                          | N/A                                                                                                                                                                                                                                                                                         | [object Object]                                                                                                                                                                                                                                                                             |
-| `pageOffset`                                                                                                                                                                                                                                                                                | *number*                                                                                                                                                                                                                                                                                    | :heavy_minus_sign:                                                                                                                                                                                                                                                                          | The current offset by number of records, not pages. Offset is zero-based. The maximum records you can offset is 10,000. If no page size is set, the [page length](https://elasticpath.dev/docs/commerce-cloud/global-project-settings/settings-overview#page-length) store setting is used. | [object Object]                                                                                                                                                                                                                                                                             |
-| `pageLimit`                                                                                                                                                                                                                                                                                 | *number*                                                                                                                                                                                                                                                                                    | :heavy_minus_sign:                                                                                                                                                                                                                                                                          | The maximum number of records per page for this response. You can set this value up to 100. If no page size is set, the [page length](https://elasticpath.dev/docs/commerce-cloud/global-project-settings/settings-overview#page-length) store setting is used.                             | [object Object]                                                                                                                                                                                                                                                                             |
-| `options`                                                                                                                                                                                                                                                                                   | RequestOptions                                                                                                                                                                                                                                                                              | :heavy_minus_sign:                                                                                                                                                                                                                                                                          | Used to set various options for making HTTP requests.                                                                                                                                                                                                                                       |                                                                                                                                                                                                                                                                                             |
-| `options.fetchOptions`                                                                                                                                                                                                                                                                      | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                                                                                                                                     | :heavy_minus_sign:                                                                                                                                                                                                                                                                          | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed.                                                                                                              |                                                                                                                                                                                                                                                                                             |
+| Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
+| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `request`                                                                                                                                                                      | [operations.ListProductsRequest](../../models/operations/listproductsrequest.md)                                                                                               | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
+| `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
+| `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
 
 
 ### Response
@@ -157,16 +154,16 @@ Get product
 ### Example Usage
 
 ```typescript
-import { SDK } from "service-subscriptions-sdk";
+import { Subscriptions } from "@field123/service-subscriptions-sdk";
 
 async function run() {
-  const sdk = new SDK({
+  const sdk = new Subscriptions({
     bearerToken: "<YOUR_BEARER_TOKEN_HERE>",
   });
 
-  const productUuid = "00000000-0000-0000-0000-000000000000";
-  
-  const result = await sdk.products.getProduct(productUuid);
+  const result = await sdk.products.getProduct({
+    productUuid: "00000000-0000-0000-0000-000000000000",
+  });
 
   // Handle the result
   console.log(result)
@@ -177,11 +174,11 @@ run();
 
 ### Parameters
 
-| Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    | Example                                                                                                                                                                        |
-| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| `productUuid`                                                                                                                                                                  | *string*                                                                                                                                                                       | :heavy_check_mark:                                                                                                                                                             | The unique identifier of a product.                                                                                                                                            | [object Object]                                                                                                                                                                |
-| `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |                                                                                                                                                                                |
-| `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |                                                                                                                                                                                |
+| Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
+| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `request`                                                                                                                                                                      | [operations.GetProductRequest](../../models/operations/getproductrequest.md)                                                                                                   | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
+| `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
+| `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
 
 
 ### Response
@@ -201,16 +198,16 @@ You cannot delete a product if it is part of an offering. You must detach the pr
 ### Example Usage
 
 ```typescript
-import { SDK } from "service-subscriptions-sdk";
+import { Subscriptions } from "@field123/service-subscriptions-sdk";
 
 async function run() {
-  const sdk = new SDK({
+  const sdk = new Subscriptions({
     bearerToken: "<YOUR_BEARER_TOKEN_HERE>",
   });
 
-  const productUuid = "00000000-0000-0000-0000-000000000000";
-  
-  const result = await sdk.products.deleteProduct(productUuid);
+  const result = await sdk.products.deleteProduct({
+    productUuid: "00000000-0000-0000-0000-000000000000",
+  });
 
   // Handle the result
   console.log(result)
@@ -221,11 +218,11 @@ run();
 
 ### Parameters
 
-| Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    | Example                                                                                                                                                                        |
-| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| `productUuid`                                                                                                                                                                  | *string*                                                                                                                                                                       | :heavy_check_mark:                                                                                                                                                             | The unique identifier of a product.                                                                                                                                            | [object Object]                                                                                                                                                                |
-| `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |                                                                                                                                                                                |
-| `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |                                                                                                                                                                                |
+| Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
+| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `request`                                                                                                                                                                      | [operations.DeleteProductRequest](../../models/operations/deleteproductrequest.md)                                                                                             | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
+| `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
+| `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
 
 
 ### Response
@@ -245,44 +242,44 @@ Specify whichever attributes you want to change. The values of the other attribu
 ### Example Usage
 
 ```typescript
-import { SDK } from "service-subscriptions-sdk";
-import { NullablePriceUnitsUnit, SubscriptionProductType } from "service-subscriptions-sdk/models/components";
+import { Subscriptions } from "@field123/service-subscriptions-sdk";
+import { NullablePriceUnitsUnit, SubscriptionProductType } from "@field123/service-subscriptions-sdk/models/components";
 
 async function run() {
-  const sdk = new SDK({
+  const sdk = new Subscriptions({
     bearerToken: "<YOUR_BEARER_TOKEN_HERE>",
   });
 
-  const productUuid = "00000000-0000-0000-0000-000000000000";
-  const requestBody = {
-    data: {
-      id: "00000000-0000-0000-0000-000000000000",
-      type: SubscriptionProductType.SubscriptionProduct,
-      attributes: {
-        externalRef: "abc123",
-        name: "Magazine",
-        description: "A lovely magazine that is published every month.",
-        sku: "MAGAZINE1",
-        mainImage: "https://magazine.com/cover.jpg",
-        price: {
-          "USD": {
-            amount: 100,
-            includesTax: false,
+  const result = await sdk.products.updateProduct({
+    productUuid: "00000000-0000-0000-0000-000000000000",
+    requestBody: {
+      data: {
+        id: "00000000-0000-0000-0000-000000000000",
+        type: SubscriptionProductType.SubscriptionProduct,
+        attributes: {
+          externalRef: "abc123",
+          name: "Magazine",
+          description: "A lovely magazine that is published every month.",
+          sku: "MAGAZINE1",
+          mainImage: "https://magazine.com/cover.jpg",
+          price: {
+            "USD": {
+              amount: 100,
+              includesTax: false,
+            },
+            "GBP": {
+              amount: 90,
+              includesTax: true,
+            },
           },
-          "GBP": {
-            amount: 90,
-            includesTax: true,
+          priceUnits: {
+            unit: NullablePriceUnitsUnit.Day,
+            amount: 7,
           },
-        },
-        priceUnits: {
-          unit: NullablePriceUnitsUnit.Day,
-          amount: 7,
         },
       },
     },
-  };
-  
-  const result = await sdk.products.updateProduct(productUuid, requestBody);
+  });
 
   // Handle the result
   console.log(result)
@@ -293,12 +290,11 @@ run();
 
 ### Parameters
 
-| Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    | Example                                                                                                                                                                        |
-| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| `productUuid`                                                                                                                                                                  | *string*                                                                                                                                                                       | :heavy_check_mark:                                                                                                                                                             | The unique identifier of a product.                                                                                                                                            | [object Object]                                                                                                                                                                |
-| `requestBody`                                                                                                                                                                  | [operations.UpdateProductRequestBody](../../models/operations/updateproductrequestbody.md)                                                                                     | :heavy_minus_sign:                                                                                                                                                             | N/A                                                                                                                                                                            |                                                                                                                                                                                |
-| `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |                                                                                                                                                                                |
-| `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |                                                                                                                                                                                |
+| Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
+| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `request`                                                                                                                                                                      | [operations.UpdateProductRequest](../../models/operations/updateproductrequest.md)                                                                                             | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
+| `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
+| `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
 
 
 ### Response

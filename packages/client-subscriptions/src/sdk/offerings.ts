@@ -26,20 +26,15 @@ export class Offerings extends ClientSDK {
      * Create an offering
      */
     async createOffering(
-        filter?: string | undefined,
-        requestBody?: operations.CreateOfferingRequestBody | undefined,
+        input: operations.CreateOfferingRequest,
         options?: RequestOptions
     ): Promise<operations.CreateOfferingResponse> {
-        const input$: operations.CreateOfferingRequest = {
-            filter: filter,
-            requestBody: requestBody,
-        };
         const headers$ = new Headers();
         headers$.set("user-agent", SDK_METADATA.userAgent);
         headers$.set("Content-Type", "application/json");
         headers$.set("Accept", "application/json");
 
-        const payload$ = operations.CreateOfferingRequest$.outboundSchema.parse(input$);
+        const payload$ = operations.CreateOfferingRequest$.outboundSchema.parse(input);
 
         const body$ = enc$.encodeJSON("body", payload$.RequestBody, { explode: true });
 
@@ -103,21 +98,14 @@ export class Offerings extends ClientSDK {
      * List offerings
      */
     async listOfferings(
-        filter?: string | undefined,
-        pageOffset?: number | undefined,
-        pageLimit?: number | undefined,
+        input: operations.ListOfferingsRequest,
         options?: RequestOptions
     ): Promise<operations.ListOfferingsResponse> {
-        const input$: operations.ListOfferingsRequest = {
-            filter: filter,
-            pageOffset: pageOffset,
-            pageLimit: pageLimit,
-        };
         const headers$ = new Headers();
         headers$.set("user-agent", SDK_METADATA.userAgent);
         headers$.set("Accept", "application/json");
 
-        const payload$ = operations.ListOfferingsRequest$.outboundSchema.parse(input$);
+        const payload$ = operations.ListOfferingsRequest$.outboundSchema.parse(input);
         const body$ = null;
 
         const path$ = this.templateURLComponent("/subscriptions/offerings")();
@@ -255,17 +243,14 @@ export class Offerings extends ClientSDK {
      * Get offering
      */
     async getOffering(
-        offeringUuid: string,
+        input: operations.GetOfferingRequest,
         options?: RequestOptions
     ): Promise<operations.GetOfferingResponse> {
-        const input$: operations.GetOfferingRequest = {
-            offeringUuid: offeringUuid,
-        };
         const headers$ = new Headers();
         headers$.set("user-agent", SDK_METADATA.userAgent);
         headers$.set("Accept", "application/json");
 
-        const payload$ = operations.GetOfferingRequest$.outboundSchema.parse(input$);
+        const payload$ = operations.GetOfferingRequest$.outboundSchema.parse(input);
         const body$ = null;
 
         const pathParams$ = {
@@ -333,17 +318,14 @@ export class Offerings extends ClientSDK {
      * When a subscription is created, it creates a snapshot of the offering. This means you can delete an offering without affecting any active subscriptions.
      */
     async deleteOffering(
-        offeringUuid: string,
+        input: operations.DeleteOfferingRequest,
         options?: RequestOptions
     ): Promise<operations.DeleteOfferingResponse> {
-        const input$: operations.DeleteOfferingRequest = {
-            offeringUuid: offeringUuid,
-        };
         const headers$ = new Headers();
         headers$.set("user-agent", SDK_METADATA.userAgent);
         headers$.set("Accept", "application/json");
 
-        const payload$ = operations.DeleteOfferingRequest$.outboundSchema.parse(input$);
+        const payload$ = operations.DeleteOfferingRequest$.outboundSchema.parse(input);
         const body$ = null;
 
         const pathParams$ = {
@@ -409,20 +391,15 @@ export class Offerings extends ClientSDK {
      *
      */
     async updateOffering(
-        offeringUuid: string,
-        requestBody?: operations.UpdateOfferingRequestBody | undefined,
+        input: operations.UpdateOfferingRequest,
         options?: RequestOptions
     ): Promise<operations.UpdateOfferingResponse> {
-        const input$: operations.UpdateOfferingRequest = {
-            offeringUuid: offeringUuid,
-            requestBody: requestBody,
-        };
         const headers$ = new Headers();
         headers$.set("user-agent", SDK_METADATA.userAgent);
         headers$.set("Content-Type", "application/json");
         headers$.set("Accept", "application/json");
 
-        const payload$ = operations.UpdateOfferingRequest$.outboundSchema.parse(input$);
+        const payload$ = operations.UpdateOfferingRequest$.outboundSchema.parse(input);
 
         const body$ = enc$.encodeJSON("body", payload$.RequestBody, { explode: true });
 
@@ -488,21 +465,14 @@ export class Offerings extends ClientSDK {
      * List an offering's plans
      */
     async listOfferingPlans(
-        offeringUuid: string,
-        pageOffset?: number | undefined,
-        pageLimit?: number | undefined,
+        input: operations.ListOfferingPlansRequest,
         options?: RequestOptions
     ): Promise<operations.ListOfferingPlansResponse> {
-        const input$: operations.ListOfferingPlansRequest = {
-            offeringUuid: offeringUuid,
-            pageOffset: pageOffset,
-            pageLimit: pageLimit,
-        };
         const headers$ = new Headers();
         headers$.set("user-agent", SDK_METADATA.userAgent);
         headers$.set("Accept", "application/json");
 
-        const payload$ = operations.ListOfferingPlansRequest$.outboundSchema.parse(input$);
+        const payload$ = operations.ListOfferingPlansRequest$.outboundSchema.parse(input);
         const body$ = null;
 
         const pathParams$ = {
@@ -587,20 +557,15 @@ export class Offerings extends ClientSDK {
      *
      */
     async attachOfferingPlan(
-        offeringUuid: string,
-        requestBody?: operations.AttachOfferingPlanRequestBody | undefined,
+        input: operations.AttachOfferingPlanRequest,
         options?: RequestOptions
     ): Promise<operations.AttachOfferingPlanResponse> {
-        const input$: operations.AttachOfferingPlanRequest = {
-            offeringUuid: offeringUuid,
-            requestBody: requestBody,
-        };
         const headers$ = new Headers();
         headers$.set("user-agent", SDK_METADATA.userAgent);
         headers$.set("Content-Type", "application/json");
         headers$.set("Accept", "application/json");
 
-        const payload$ = operations.AttachOfferingPlanRequest$.outboundSchema.parse(input$);
+        const payload$ = operations.AttachOfferingPlanRequest$.outboundSchema.parse(input);
 
         const body$ = enc$.encodeJSON("body", payload$.RequestBody, { explode: true });
 
@@ -666,22 +631,15 @@ export class Offerings extends ClientSDK {
      * Updates a plan in an offering
      */
     async updateOfferingPlan(
-        offeringUuid: string,
-        planUuid: string,
-        requestBody?: operations.UpdateOfferingPlanRequestBody | undefined,
+        input: operations.UpdateOfferingPlanRequest,
         options?: RequestOptions
     ): Promise<operations.UpdateOfferingPlanResponse> {
-        const input$: operations.UpdateOfferingPlanRequest = {
-            offeringUuid: offeringUuid,
-            planUuid: planUuid,
-            requestBody: requestBody,
-        };
         const headers$ = new Headers();
         headers$.set("user-agent", SDK_METADATA.userAgent);
         headers$.set("Content-Type", "application/json");
         headers$.set("Accept", "application/json");
 
-        const payload$ = operations.UpdateOfferingPlanRequest$.outboundSchema.parse(input$);
+        const payload$ = operations.UpdateOfferingPlanRequest$.outboundSchema.parse(input);
 
         const body$ = enc$.encodeJSON("body", payload$.RequestBody, { explode: true });
 
@@ -757,19 +715,14 @@ export class Offerings extends ClientSDK {
      *
      */
     async deleteOfferingPlan(
-        offeringUuid: string,
-        planUuid: string,
+        input: operations.DeleteOfferingPlanRequest,
         options?: RequestOptions
     ): Promise<operations.DeleteOfferingPlanResponse> {
-        const input$: operations.DeleteOfferingPlanRequest = {
-            offeringUuid: offeringUuid,
-            planUuid: planUuid,
-        };
         const headers$ = new Headers();
         headers$.set("user-agent", SDK_METADATA.userAgent);
         headers$.set("Accept", "application/json");
 
-        const payload$ = operations.DeleteOfferingPlanRequest$.outboundSchema.parse(input$);
+        const payload$ = operations.DeleteOfferingPlanRequest$.outboundSchema.parse(input);
         const body$ = null;
 
         const pathParams$ = {
@@ -835,21 +788,14 @@ export class Offerings extends ClientSDK {
      * List an offering's products
      */
     async listOfferingProducts(
-        offeringUuid: string,
-        pageOffset?: number | undefined,
-        pageLimit?: number | undefined,
+        input: operations.ListOfferingProductsRequest,
         options?: RequestOptions
     ): Promise<operations.ListOfferingProductsResponse> {
-        const input$: operations.ListOfferingProductsRequest = {
-            offeringUuid: offeringUuid,
-            pageOffset: pageOffset,
-            pageLimit: pageLimit,
-        };
         const headers$ = new Headers();
         headers$.set("user-agent", SDK_METADATA.userAgent);
         headers$.set("Accept", "application/json");
 
-        const payload$ = operations.ListOfferingProductsRequest$.outboundSchema.parse(input$);
+        const payload$ = operations.ListOfferingProductsRequest$.outboundSchema.parse(input);
         const body$ = null;
 
         const pathParams$ = {
@@ -934,20 +880,15 @@ export class Offerings extends ClientSDK {
      *
      */
     async attachOfferingProduct(
-        offeringUuid: string,
-        requestBody?: operations.AttachOfferingProductRequestBody | undefined,
+        input: operations.AttachOfferingProductRequest,
         options?: RequestOptions
     ): Promise<operations.AttachOfferingProductResponse> {
-        const input$: operations.AttachOfferingProductRequest = {
-            offeringUuid: offeringUuid,
-            requestBody: requestBody,
-        };
         const headers$ = new Headers();
         headers$.set("user-agent", SDK_METADATA.userAgent);
         headers$.set("Content-Type", "application/json");
         headers$.set("Accept", "application/json");
 
-        const payload$ = operations.AttachOfferingProductRequest$.outboundSchema.parse(input$);
+        const payload$ = operations.AttachOfferingProductRequest$.outboundSchema.parse(input);
 
         const body$ = enc$.encodeJSON("body", payload$.RequestBody, { explode: true });
 
@@ -1016,22 +957,15 @@ export class Offerings extends ClientSDK {
      * Use the unique identifier of the product in the offering that you want to update. Any modifications that you make to the products in an offering, does not affect any active subscriptions. The changes take effect on all new subscriptions that are created.
      */
     async updateOfferingProduct(
-        offeringUuid: string,
-        productUuid: string,
-        requestBody?: operations.UpdateOfferingProductRequestBody | undefined,
+        input: operations.UpdateOfferingProductRequest,
         options?: RequestOptions
     ): Promise<operations.UpdateOfferingProductResponse> {
-        const input$: operations.UpdateOfferingProductRequest = {
-            offeringUuid: offeringUuid,
-            productUuid: productUuid,
-            requestBody: requestBody,
-        };
         const headers$ = new Headers();
         headers$.set("user-agent", SDK_METADATA.userAgent);
         headers$.set("Content-Type", "application/json");
         headers$.set("Accept", "application/json");
 
-        const payload$ = operations.UpdateOfferingProductRequest$.outboundSchema.parse(input$);
+        const payload$ = operations.UpdateOfferingProductRequest$.outboundSchema.parse(input);
 
         const body$ = enc$.encodeJSON("body", payload$.RequestBody, { explode: true });
 
@@ -1107,19 +1041,14 @@ export class Offerings extends ClientSDK {
      *
      */
     async deleteOfferingProduct(
-        offeringUuid: string,
-        productUuid: string,
+        input: operations.DeleteOfferingProductRequest,
         options?: RequestOptions
     ): Promise<operations.DeleteOfferingProductResponse> {
-        const input$: operations.DeleteOfferingProductRequest = {
-            offeringUuid: offeringUuid,
-            productUuid: productUuid,
-        };
         const headers$ = new Headers();
         headers$.set("user-agent", SDK_METADATA.userAgent);
         headers$.set("Accept", "application/json");
 
-        const payload$ = operations.DeleteOfferingProductRequest$.outboundSchema.parse(input$);
+        const payload$ = operations.DeleteOfferingProductRequest$.outboundSchema.parse(input);
         const body$ = null;
 
         const pathParams$ = {

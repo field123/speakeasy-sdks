@@ -44,43 +44,46 @@ For supported JavaScript runtimes, please consult [RUNTIMES.md](RUNTIMES.md).
 ### Example
 
 ```typescript
-import { SDK } from "service-subscriptions-sdk";
-import { SubscriptionProductType, Unit } from "service-subscriptions-sdk/models/components";
+import { Subscriptions } from "@field123/service-subscriptions-sdk";
+import {
+    SubscriptionProductType,
+    Unit,
+} from "@field123/service-subscriptions-sdk/models/components";
 
 async function run() {
-    const sdk = new SDK({
+    const sdk = new Subscriptions({
         bearerToken: "<YOUR_BEARER_TOKEN_HERE>",
     });
 
-    const filter = "eq(name,Alan Turing)";
-    const requestBody = {
-        data: {
-            type: SubscriptionProductType.SubscriptionProduct,
-            attributes: {
-                externalRef: "abc123",
-                name: "Magazine",
-                description: "A lovely magazine that is published every month.",
-                sku: "MAGAZINE1",
-                mainImage: "https://magazine.com/cover.jpg",
-                price: {
-                    USD: {
-                        amount: 100,
-                        includesTax: false,
+    const result = await sdk.products.createProduct({
+        filter: "eq(name,Alan Turing)",
+        requestBody: {
+            data: {
+                type: SubscriptionProductType.SubscriptionProduct,
+                attributes: {
+                    externalRef: "abc123",
+                    name: "Magazine",
+                    description: "A lovely magazine that is published every month.",
+                    sku: "MAGAZINE1",
+                    mainImage: "https://magazine.com/cover.jpg",
+                    price: {
+                        USD: {
+                            amount: 100,
+                            includesTax: false,
+                        },
+                        GBP: {
+                            amount: 90,
+                            includesTax: true,
+                        },
                     },
-                    GBP: {
-                        amount: 90,
-                        includesTax: true,
+                    priceUnits: {
+                        unit: Unit.Day,
+                        amount: 7,
                     },
-                },
-                priceUnits: {
-                    unit: Unit.Day,
-                    amount: 7,
                 },
             },
         },
-    };
-
-    const result = await sdk.products.createProduct(filter, requestBody);
+    });
 
     // Handle the result
     console.log(result);
@@ -127,17 +130,17 @@ run();
 * [updateOfferingProduct](docs/sdks/offerings/README.md#updateofferingproduct) - Updates a product in an offering
 * [deleteOfferingProduct](docs/sdks/offerings/README.md#deleteofferingproduct) - Remove a product from an offering
 
-### [subscriptions](docs/sdks/subscriptions/README.md)
+### [subscriptions](docs/sdks/subscriptionssdk/README.md)
 
-* [createSubscription](docs/sdks/subscriptions/README.md#createsubscription) - Create a subscription
-* [listSubscriptions](docs/sdks/subscriptions/README.md#listsubscriptions) - List subscriptions
-* [getSubscription](docs/sdks/subscriptions/README.md#getsubscription) - Get subscription
-* [deleteSubscription](docs/sdks/subscriptions/README.md#deletesubscription) - Delete subscription
-* [listSubscriptionInvoices](docs/sdks/subscriptions/README.md#listsubscriptioninvoices) - List subscription invoices
-* [cancelSubscription](docs/sdks/subscriptions/README.md#cancelsubscription) - Cancels subscription
-* [listSubscriptionInvoicePayments](docs/sdks/subscriptions/README.md#listsubscriptioninvoicepayments) - List subscription invoice payments
-* [getSubscriptionInvoicePayment](docs/sdks/subscriptions/README.md#getsubscriptioninvoicepayment) - Get subscription invoice payment
-* [getSubscriptionInvoice](docs/sdks/subscriptions/README.md#getsubscriptioninvoice) - Get subscription invoice
+* [createSubscription](docs/sdks/subscriptionssdk/README.md#createsubscription) - Create a subscription
+* [listSubscriptions](docs/sdks/subscriptionssdk/README.md#listsubscriptions) - List subscriptions
+* [getSubscription](docs/sdks/subscriptionssdk/README.md#getsubscription) - Get subscription
+* [deleteSubscription](docs/sdks/subscriptionssdk/README.md#deletesubscription) - Delete subscription
+* [listSubscriptionInvoices](docs/sdks/subscriptionssdk/README.md#listsubscriptioninvoices) - List subscription invoices
+* [cancelSubscription](docs/sdks/subscriptionssdk/README.md#cancelsubscription) - Cancels subscription
+* [listSubscriptionInvoicePayments](docs/sdks/subscriptionssdk/README.md#listsubscriptioninvoicepayments) - List subscription invoice payments
+* [getSubscriptionInvoicePayment](docs/sdks/subscriptionssdk/README.md#getsubscriptioninvoicepayment) - Get subscription invoice payment
+* [getSubscriptionInvoice](docs/sdks/subscriptionssdk/README.md#getsubscriptioninvoice) - Get subscription invoice
 
 ### [jobs](docs/sdks/jobs/README.md)
 
@@ -176,45 +179,48 @@ All SDK methods return a response object or throw an error. If Error objects are
 Example
 
 ```typescript
-import { SDK } from "service-subscriptions-sdk";
-import { SubscriptionProductType, Unit } from "service-subscriptions-sdk/models/components";
+import { Subscriptions } from "@field123/service-subscriptions-sdk";
+import {
+    SubscriptionProductType,
+    Unit,
+} from "@field123/service-subscriptions-sdk/models/components";
 
 async function run() {
-    const sdk = new SDK({
+    const sdk = new Subscriptions({
         bearerToken: "<YOUR_BEARER_TOKEN_HERE>",
     });
 
-    const filter = "eq(name,Alan Turing)";
-    const requestBody = {
-        data: {
-            type: SubscriptionProductType.SubscriptionProduct,
-            attributes: {
-                externalRef: "abc123",
-                name: "Magazine",
-                description: "A lovely magazine that is published every month.",
-                sku: "MAGAZINE1",
-                mainImage: "https://magazine.com/cover.jpg",
-                price: {
-                    USD: {
-                        amount: 100,
-                        includesTax: false,
-                    },
-                    GBP: {
-                        amount: 90,
-                        includesTax: true,
-                    },
-                },
-                priceUnits: {
-                    unit: Unit.Day,
-                    amount: 7,
-                },
-            },
-        },
-    };
-
     let result;
     try {
-        result = await sdk.products.createProduct(filter, requestBody);
+        result = await sdk.products.createProduct({
+            filter: "eq(name,Alan Turing)",
+            requestBody: {
+                data: {
+                    type: SubscriptionProductType.SubscriptionProduct,
+                    attributes: {
+                        externalRef: "abc123",
+                        name: "Magazine",
+                        description: "A lovely magazine that is published every month.",
+                        sku: "MAGAZINE1",
+                        mainImage: "https://magazine.com/cover.jpg",
+                        price: {
+                            USD: {
+                                amount: 100,
+                                includesTax: false,
+                            },
+                            GBP: {
+                                amount: 90,
+                                includesTax: true,
+                            },
+                        },
+                        priceUnits: {
+                            unit: Unit.Day,
+                            amount: 7,
+                        },
+                    },
+                },
+            },
+        });
     } catch (err) {
         switch (true) {
             case err instanceof errors.ErrorResponse: {
@@ -251,44 +257,47 @@ You can override the default server globally by passing a server index to the `s
 | 3 | `https://useast.api.elasticpath.com/v2` | None |
 
 ```typescript
-import { SDK } from "service-subscriptions-sdk";
-import { SubscriptionProductType, Unit } from "service-subscriptions-sdk/models/components";
+import { Subscriptions } from "@field123/service-subscriptions-sdk";
+import {
+    SubscriptionProductType,
+    Unit,
+} from "@field123/service-subscriptions-sdk/models/components";
 
 async function run() {
-    const sdk = new SDK({
+    const sdk = new Subscriptions({
         serverIdx: 3,
         bearerToken: "<YOUR_BEARER_TOKEN_HERE>",
     });
 
-    const filter = "eq(name,Alan Turing)";
-    const requestBody = {
-        data: {
-            type: SubscriptionProductType.SubscriptionProduct,
-            attributes: {
-                externalRef: "abc123",
-                name: "Magazine",
-                description: "A lovely magazine that is published every month.",
-                sku: "MAGAZINE1",
-                mainImage: "https://magazine.com/cover.jpg",
-                price: {
-                    USD: {
-                        amount: 100,
-                        includesTax: false,
+    const result = await sdk.products.createProduct({
+        filter: "eq(name,Alan Turing)",
+        requestBody: {
+            data: {
+                type: SubscriptionProductType.SubscriptionProduct,
+                attributes: {
+                    externalRef: "abc123",
+                    name: "Magazine",
+                    description: "A lovely magazine that is published every month.",
+                    sku: "MAGAZINE1",
+                    mainImage: "https://magazine.com/cover.jpg",
+                    price: {
+                        USD: {
+                            amount: 100,
+                            includesTax: false,
+                        },
+                        GBP: {
+                            amount: 90,
+                            includesTax: true,
+                        },
                     },
-                    GBP: {
-                        amount: 90,
-                        includesTax: true,
+                    priceUnits: {
+                        unit: Unit.Day,
+                        amount: 7,
                     },
-                },
-                priceUnits: {
-                    unit: Unit.Day,
-                    amount: 7,
                 },
             },
         },
-    };
-
-    const result = await sdk.products.createProduct(filter, requestBody);
+    });
 
     // Handle the result
     console.log(result);
@@ -304,44 +313,47 @@ run();
 The default server can also be overridden globally by passing a URL to the `serverURL` optional parameter when initializing the SDK client instance. For example:
 
 ```typescript
-import { SDK } from "service-subscriptions-sdk";
-import { SubscriptionProductType, Unit } from "service-subscriptions-sdk/models/components";
+import { Subscriptions } from "@field123/service-subscriptions-sdk";
+import {
+    SubscriptionProductType,
+    Unit,
+} from "@field123/service-subscriptions-sdk/models/components";
 
 async function run() {
-    const sdk = new SDK({
+    const sdk = new Subscriptions({
         serverURL: "https://epcc-integration.global.ssl.fastly.net/v2",
         bearerToken: "<YOUR_BEARER_TOKEN_HERE>",
     });
 
-    const filter = "eq(name,Alan Turing)";
-    const requestBody = {
-        data: {
-            type: SubscriptionProductType.SubscriptionProduct,
-            attributes: {
-                externalRef: "abc123",
-                name: "Magazine",
-                description: "A lovely magazine that is published every month.",
-                sku: "MAGAZINE1",
-                mainImage: "https://magazine.com/cover.jpg",
-                price: {
-                    USD: {
-                        amount: 100,
-                        includesTax: false,
+    const result = await sdk.products.createProduct({
+        filter: "eq(name,Alan Turing)",
+        requestBody: {
+            data: {
+                type: SubscriptionProductType.SubscriptionProduct,
+                attributes: {
+                    externalRef: "abc123",
+                    name: "Magazine",
+                    description: "A lovely magazine that is published every month.",
+                    sku: "MAGAZINE1",
+                    mainImage: "https://magazine.com/cover.jpg",
+                    price: {
+                        USD: {
+                            amount: 100,
+                            includesTax: false,
+                        },
+                        GBP: {
+                            amount: 90,
+                            includesTax: true,
+                        },
                     },
-                    GBP: {
-                        amount: 90,
-                        includesTax: true,
+                    priceUnits: {
+                        unit: Unit.Day,
+                        amount: 7,
                     },
-                },
-                priceUnits: {
-                    unit: Unit.Day,
-                    amount: 7,
                 },
             },
         },
-    };
-
-    const result = await sdk.products.createProduct(filter, requestBody);
+    });
 
     // Handle the result
     console.log(result);
@@ -370,8 +382,8 @@ custom header and a timeout to requests and how to use the `"requestError"` hook
 to log errors:
 
 ```typescript
-import { SDK } from "service-subscriptions-sdk";
-import { HTTPClient } from "service-subscriptions-sdk/lib/http";
+import { Subscriptions } from "@field123/service-subscriptions-sdk";
+import { HTTPClient } from "@field123/service-subscriptions-sdk/lib/http";
 
 const httpClient = new HTTPClient({
   // fetcher takes a function that has the same signature as native `fetch`.
@@ -397,7 +409,7 @@ httpClient.addHook("requestError", (error, request) => {
   console.groupEnd();
 });
 
-const sdk = new SDK({ httpClient });
+const sdk = new Subscriptions({ httpClient });
 ```
 <!-- End Custom HTTP Client [http-client] -->
 
@@ -414,43 +426,46 @@ This SDK supports the following security scheme globally:
 
 To authenticate with the API the `bearerToken` parameter must be set when initializing the SDK client instance. For example:
 ```typescript
-import { SDK } from "service-subscriptions-sdk";
-import { SubscriptionProductType, Unit } from "service-subscriptions-sdk/models/components";
+import { Subscriptions } from "@field123/service-subscriptions-sdk";
+import {
+    SubscriptionProductType,
+    Unit,
+} from "@field123/service-subscriptions-sdk/models/components";
 
 async function run() {
-    const sdk = new SDK({
+    const sdk = new Subscriptions({
         bearerToken: "<YOUR_BEARER_TOKEN_HERE>",
     });
 
-    const filter = "eq(name,Alan Turing)";
-    const requestBody = {
-        data: {
-            type: SubscriptionProductType.SubscriptionProduct,
-            attributes: {
-                externalRef: "abc123",
-                name: "Magazine",
-                description: "A lovely magazine that is published every month.",
-                sku: "MAGAZINE1",
-                mainImage: "https://magazine.com/cover.jpg",
-                price: {
-                    USD: {
-                        amount: 100,
-                        includesTax: false,
+    const result = await sdk.products.createProduct({
+        filter: "eq(name,Alan Turing)",
+        requestBody: {
+            data: {
+                type: SubscriptionProductType.SubscriptionProduct,
+                attributes: {
+                    externalRef: "abc123",
+                    name: "Magazine",
+                    description: "A lovely magazine that is published every month.",
+                    sku: "MAGAZINE1",
+                    mainImage: "https://magazine.com/cover.jpg",
+                    price: {
+                        USD: {
+                            amount: 100,
+                            includesTax: false,
+                        },
+                        GBP: {
+                            amount: 90,
+                            includesTax: true,
+                        },
                     },
-                    GBP: {
-                        amount: 90,
-                        includesTax: true,
+                    priceUnits: {
+                        unit: Unit.Day,
+                        amount: 7,
                     },
-                },
-                priceUnits: {
-                    unit: Unit.Day,
-                    amount: 7,
                 },
             },
         },
-    };
-
-    const result = await sdk.products.createProduct(filter, requestBody);
+    });
 
     // Handle the result
     console.log(result);

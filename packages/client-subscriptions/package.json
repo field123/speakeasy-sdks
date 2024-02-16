@@ -1,9 +1,8 @@
 {
-  "type": "commonjs",
-  "name": "service-subscriptions-sdk",
-  "version": "0.0.4",
-  "author": "Speakeasy",
-  "main": "./index.js",
+  "name": "@field123/service-subscriptions-sdk",
+  "version": "0.1.2-alpha.1",
+  "author": "Elastic Path",
+  "main": "dist/index.js",
   "sideEffects": false,
   "scripts": {
     "lint": "eslint --max-warnings=0 src",
@@ -14,6 +13,11 @@
   "peerDependencies": {
     "zod": ">= 3"
   },
+  "files": [
+    "dist",
+    "docs",
+    "README.md"
+  ],
   "devDependencies": {
     "@typescript-eslint/eslint-plugin": "^6.13.2",
     "@typescript-eslint/parser": "^6.13.2",
