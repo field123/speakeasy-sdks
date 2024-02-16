@@ -1,12 +1,12 @@
 "use client";
 
-import { SDK } from "service-subscriptions-sdk";
+import { Subscriptions } from "@field123/service-subscriptions-sdk";
 import { useEffect, useState } from "react";
-import { GetOfferingResponse } from "service-subscriptions-sdk/models/operations";
+import { GetOfferingResponse } from "@field123/service-subscriptions-sdk/dist/models/operations";
 import {
   InLocalStorageTokenStore,
   withClientCredentialAuthorization,
-} from "service-subscriptions-sdk/oauth";
+} from "@field123/service-subscriptions-sdk/dist/oauth";
 
 const appKeys = {
   clientId: process.env.NEXT_PUBLIC_CLIENT_ID!,
@@ -16,7 +16,7 @@ const appKeys = {
 export function OfferingClient() {
   const [offering, setOffering] = useState<GetOfferingResponse | null>(null);
 
-  const sdk = new SDK({
+  const sdk = new Subscriptions({
     bearerToken: withClientCredentialAuthorization(
       appKeys.clientId,
       appKeys.clientSecret,
@@ -28,9 +28,9 @@ export function OfferingClient() {
   });
 
   async function resolveOffering() {
-    const response = await sdk.offerings.getOffering(
-      "a601ac4d-9482-4672-b385-b69d64032489",
-    );
+    const response = await sdk.offerings.getOffering({
+      offeringUuid: "a601ac4d-9482-4672-b385-b69d64032489",
+    });
     setOffering(response);
   }
 
@@ -39,8 +39,8 @@ export function OfferingClient() {
   }, []);
 
   return (
-    <div className="">
-      <h2>Offering Client</h2>
+    <div className="overflow-x-scroll border-2 border-gray-200 rounded-lg p-4">
+      <h2 className="text-xl semibold py-2">Offering Client</h2>
       {offering ? (
         <pre>{JSON.stringify(offering, null, 2)}</pre>
       ) : (
