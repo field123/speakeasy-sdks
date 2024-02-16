@@ -1,14 +1,14 @@
 {
   "type": "commonjs",
   "name": "service-subscriptions-sdk",
-  "version": "0.0.2",
+  "version": "0.0.4",
   "author": "Speakeasy",
   "main": "./index.js",
   "sideEffects": false,
   "scripts": {
     "lint": "eslint --max-warnings=0 src",
     "build": "tsc",
-    "prepare": "npm run build"
+    "prepare": "pnpm run build"
   },
   "keywords": [],
   "peerDependencies": {
