@@ -1,6 +1,6 @@
 {
   "type": "commonjs",
-  "name": "openapi",
+  "name": "@elasticpath/service-subscriptions-sdk",
   "version": "0.0.1",
   "author": "Speakeasy",
   "main": "./index.js",

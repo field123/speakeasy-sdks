@@ -25,5 +25,5 @@ typescript:
   inputModelSuffix: input
   maxMethodParams: 4
   outputModelSuffix: output
-  packageName: openapi
+  packageName: service-subscriptions-sdk
   templateVersion: v2
