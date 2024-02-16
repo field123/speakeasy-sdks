@@ -26,20 +26,15 @@ export class Products extends ClientSDK {
      * Create a product
      */
     async createProduct(
-        filter?: string | undefined,
-        requestBody?: operations.CreateProductRequestBody | undefined,
+        input: operations.CreateProductRequest,
         options?: RequestOptions
     ): Promise<operations.CreateProductResponse> {
-        const input$: operations.CreateProductRequest = {
-            filter: filter,
-            requestBody: requestBody,
-        };
         const headers$ = new Headers();
         headers$.set("user-agent", SDK_METADATA.userAgent);
         headers$.set("Content-Type", "application/json");
         headers$.set("Accept", "application/json");
 
-        const payload$ = operations.CreateProductRequest$.outboundSchema.parse(input$);
+        const payload$ = operations.CreateProductRequest$.outboundSchema.parse(input);
 
         const body$ = enc$.encodeJSON("body", payload$.RequestBody, { explode: true });
 
@@ -103,21 +98,14 @@ export class Products extends ClientSDK {
      * List products
      */
     async listProducts(
-        filter?: string | undefined,
-        pageOffset?: number | undefined,
-        pageLimit?: number | undefined,
+        input: operations.ListProductsRequest,
         options?: RequestOptions
     ): Promise<operations.ListProductsResponse> {
-        const input$: operations.ListProductsRequest = {
-            filter: filter,
-            pageOffset: pageOffset,
-            pageLimit: pageLimit,
-        };
         const headers$ = new Headers();
         headers$.set("user-agent", SDK_METADATA.userAgent);
         headers$.set("Accept", "application/json");
 
-        const payload$ = operations.ListProductsRequest$.outboundSchema.parse(input$);
+        const payload$ = operations.ListProductsRequest$.outboundSchema.parse(input);
         const body$ = null;
 
         const path$ = this.templateURLComponent("/subscriptions/products")();
@@ -188,17 +176,14 @@ export class Products extends ClientSDK {
      * Get product
      */
     async getProduct(
-        productUuid: string,
+        input: operations.GetProductRequest,
         options?: RequestOptions
     ): Promise<operations.GetProductResponse> {
-        const input$: operations.GetProductRequest = {
-            productUuid: productUuid,
-        };
         const headers$ = new Headers();
         headers$.set("user-agent", SDK_METADATA.userAgent);
         headers$.set("Accept", "application/json");
 
-        const payload$ = operations.GetProductRequest$.outboundSchema.parse(input$);
+        const payload$ = operations.GetProductRequest$.outboundSchema.parse(input);
         const body$ = null;
 
         const pathParams$ = {
@@ -266,17 +251,14 @@ export class Products extends ClientSDK {
      * You cannot delete a product if it is part of an offering. You must detach the product from the offering first.
      */
     async deleteProduct(
-        productUuid: string,
+        input: operations.DeleteProductRequest,
         options?: RequestOptions
     ): Promise<operations.DeleteProductResponse> {
-        const input$: operations.DeleteProductRequest = {
-            productUuid: productUuid,
-        };
         const headers$ = new Headers();
         headers$.set("user-agent", SDK_METADATA.userAgent);
         headers$.set("Accept", "application/json");
 
-        const payload$ = operations.DeleteProductRequest$.outboundSchema.parse(input$);
+        const payload$ = operations.DeleteProductRequest$.outboundSchema.parse(input);
         const body$ = null;
 
         const pathParams$ = {
@@ -341,20 +323,15 @@ export class Products extends ClientSDK {
      * Specify whichever attributes you want to change. The values of the other attributes remain the same. If the attributes section is empty, the product is not updated.
      */
     async updateProduct(
-        productUuid: string,
-        requestBody?: operations.UpdateProductRequestBody | undefined,
+        input: operations.UpdateProductRequest,
         options?: RequestOptions
     ): Promise<operations.UpdateProductResponse> {
-        const input$: operations.UpdateProductRequest = {
-            productUuid: productUuid,
-            requestBody: requestBody,
-        };
         const headers$ = new Headers();
         headers$.set("user-agent", SDK_METADATA.userAgent);
         headers$.set("Content-Type", "application/json");
         headers$.set("Accept", "application/json");
 
-        const payload$ = operations.UpdateProductRequest$.outboundSchema.parse(input$);
+        const payload$ = operations.UpdateProductRequest$.outboundSchema.parse(input);
 
         const body$ = enc$.encodeJSON("body", payload$.RequestBody, { explode: true });
 

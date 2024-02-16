@@ -1,6 +1,6 @@
 configVersion: 2.0.0
 generation:
-  sdkClassName: SDK
+  sdkClassName: Subscriptions
   maintainOpenAPIOrder: true
   usageSnippets:
     optionalPropertyRendering: withExample
@@ -10,8 +10,8 @@ generation:
     parameterOrderingFeb2024: true
     requestResponseComponentNamesFeb2024: true
 typescript:
-  version: 0.0.4
-  author: Speakeasy
+  version: 0.1.1
+  author: Elastic Path
   clientServerStatusCodesAsErrors: true
   flattenGlobalSecurity: true
   imports:
@@ -23,7 +23,7 @@ typescript:
       shared: models/components
       webhooks: models/webhooks
   inputModelSuffix: input
-  maxMethodParams: 4
+  maxMethodParams: 0
   outputModelSuffix: output
-  packageName: service-subscriptions-sdk
+  packageName: '@field123/service-subscriptions-sdk'
   templateVersion: v2

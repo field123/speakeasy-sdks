@@ -26,17 +26,14 @@ export class Schedules extends ClientSDK {
      * List schedules
      */
     async listSchedules(
-        filter?: string | undefined,
+        input: operations.ListSchedulesRequest,
         options?: RequestOptions
     ): Promise<operations.ListSchedulesResponse> {
-        const input$: operations.ListSchedulesRequest = {
-            filter: filter,
-        };
         const headers$ = new Headers();
         headers$.set("user-agent", SDK_METADATA.userAgent);
         headers$.set("Accept", "application/json");
 
-        const payload$ = operations.ListSchedulesRequest$.outboundSchema.parse(input$);
+        const payload$ = operations.ListSchedulesRequest$.outboundSchema.parse(input);
         const body$ = null;
 
         const path$ = this.templateURLComponent("/subscriptions/schedules")();
@@ -99,20 +96,15 @@ export class Schedules extends ClientSDK {
      * Create a schedule
      */
     async createSchedule(
-        filter?: string | undefined,
-        requestBody?: operations.CreateScheduleRequestBody | undefined,
+        input: operations.CreateScheduleRequest,
         options?: RequestOptions
     ): Promise<operations.CreateScheduleResponse> {
-        const input$: operations.CreateScheduleRequest = {
-            filter: filter,
-            requestBody: requestBody,
-        };
         const headers$ = new Headers();
         headers$.set("user-agent", SDK_METADATA.userAgent);
         headers$.set("Content-Type", "application/json");
         headers$.set("Accept", "application/json");
 
-        const payload$ = operations.CreateScheduleRequest$.outboundSchema.parse(input$);
+        const payload$ = operations.CreateScheduleRequest$.outboundSchema.parse(input);
 
         const body$ = enc$.encodeJSON("body", payload$.RequestBody, { explode: true });
 
@@ -176,17 +168,14 @@ export class Schedules extends ClientSDK {
      * Get a schedule
      */
     async getSchedule(
-        scheduleUuid: string,
+        input: operations.GetScheduleRequest,
         options?: RequestOptions
     ): Promise<operations.GetScheduleResponse> {
-        const input$: operations.GetScheduleRequest = {
-            scheduleUuid: scheduleUuid,
-        };
         const headers$ = new Headers();
         headers$.set("user-agent", SDK_METADATA.userAgent);
         headers$.set("Accept", "application/json");
 
-        const payload$ = operations.GetScheduleRequest$.outboundSchema.parse(input$);
+        const payload$ = operations.GetScheduleRequest$.outboundSchema.parse(input);
         const body$ = null;
 
         const pathParams$ = {
@@ -251,20 +240,15 @@ export class Schedules extends ClientSDK {
      * Update a schedule
      */
     async updateSchedule(
-        scheduleUuid: string,
-        requestBody?: operations.UpdateScheduleRequestBody | undefined,
+        input: operations.UpdateScheduleRequest,
         options?: RequestOptions
     ): Promise<operations.UpdateScheduleResponse> {
-        const input$: operations.UpdateScheduleRequest = {
-            scheduleUuid: scheduleUuid,
-            requestBody: requestBody,
-        };
         const headers$ = new Headers();
         headers$.set("user-agent", SDK_METADATA.userAgent);
         headers$.set("Content-Type", "application/json");
         headers$.set("Accept", "application/json");
 
-        const payload$ = operations.UpdateScheduleRequest$.outboundSchema.parse(input$);
+        const payload$ = operations.UpdateScheduleRequest$.outboundSchema.parse(input);
 
         const body$ = enc$.encodeJSON("body", payload$.RequestBody, { explode: true });
 
@@ -330,17 +314,14 @@ export class Schedules extends ClientSDK {
      * Delete schedule
      */
     async deleteSchedule(
-        scheduleUuid: string,
+        input: operations.DeleteScheduleRequest,
         options?: RequestOptions
     ): Promise<operations.DeleteScheduleResponse> {
-        const input$: operations.DeleteScheduleRequest = {
-            scheduleUuid: scheduleUuid,
-        };
         const headers$ = new Headers();
         headers$.set("user-agent", SDK_METADATA.userAgent);
         headers$.set("Accept", "application/json");
 
-        const payload$ = operations.DeleteScheduleRequest$.outboundSchema.parse(input$);
+        const payload$ = operations.DeleteScheduleRequest$.outboundSchema.parse(input);
         const body$ = null;
 
         const pathParams$ = {

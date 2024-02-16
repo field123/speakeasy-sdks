@@ -5,13 +5,12 @@ management:
   docVersion: 1.0.0
   speakeasyVersion: internal
   generationVersion: 2.259.1
-  releaseVersion: 0.0.4
-  configChecksum: b87e5054bd9479f95046cde93b486f3d
+  releaseVersion: 0.1.1
+  configChecksum: c47755f7e5a7a78cc4b85740d3452770
 features:
   typescript:
     constsAndDefaults: 0.1.3
     core: 3.4.10
-    flattening: 2.81.1
     globalSecurity: 2.82.2
     globalServerURLs: 2.82.3
     inputOutputModels: 2.82.0
@@ -20,7 +19,7 @@ generatedFiles:
   - src/sdk/products.ts
   - src/sdk/plans.ts
   - src/sdk/offerings.ts
-  - src/sdk/subscriptions.ts
+  - src/sdk/subscriptionssdk.ts
   - src/sdk/jobs.ts
   - src/sdk/schedules.ts
   - src/sdk/subscribers.ts
@@ -449,11 +448,11 @@ generatedFiles:
   - docs/models/components/subscriberupdateattributes.md
   - docs/models/components/security.md
   - docs/models/errors/errorresponse.md
-  - docs/sdks/sdk/README.md
+  - docs/sdks/subscriptions/README.md
   - docs/sdks/products/README.md
   - docs/sdks/plans/README.md
   - docs/sdks/offerings/README.md
-  - docs/sdks/subscriptions/README.md
+  - docs/sdks/subscriptionssdk/README.md
   - docs/sdks/jobs/README.md
   - docs/sdks/schedules/README.md
   - docs/sdks/subscribers/README.md

@@ -9,7 +9,7 @@ import { ClientSDK, RequestOptions } from "../lib/sdks";
 import * as errors from "../models/errors";
 import * as operations from "../models/operations";
 
-export class Subscriptions extends ClientSDK {
+export class SubscriptionsSDK extends ClientSDK {
     private readonly options$: SDKOptions;
 
     constructor(options: SDKOptions = {}) {
@@ -26,20 +26,15 @@ export class Subscriptions extends ClientSDK {
      * Create a subscription
      */
     async createSubscription(
-        filter?: string | undefined,
-        requestBody?: operations.CreateSubscriptionRequestBody | undefined,
+        input: operations.CreateSubscriptionRequest,
         options?: RequestOptions
     ): Promise<operations.CreateSubscriptionResponse> {
-        const input$: operations.CreateSubscriptionRequest = {
-            filter: filter,
-            requestBody: requestBody,
-        };
         const headers$ = new Headers();
         headers$.set("user-agent", SDK_METADATA.userAgent);
         headers$.set("Content-Type", "application/json");
         headers$.set("Accept", "application/json");
 
-        const payload$ = operations.CreateSubscriptionRequest$.outboundSchema.parse(input$);
+        const payload$ = operations.CreateSubscriptionRequest$.outboundSchema.parse(input);
 
         const body$ = enc$.encodeJSON("body", payload$.RequestBody, { explode: true });
 
@@ -103,21 +98,14 @@ export class Subscriptions extends ClientSDK {
      * List subscriptions
      */
     async listSubscriptions(
-        filter?: string | undefined,
-        pageOffset?: number | undefined,
-        pageLimit?: number | undefined,
+        input: operations.ListSubscriptionsRequest,
         options?: RequestOptions
     ): Promise<operations.ListSubscriptionsResponse> {
-        const input$: operations.ListSubscriptionsRequest = {
-            filter: filter,
-            pageOffset: pageOffset,
-            pageLimit: pageLimit,
-        };
         const headers$ = new Headers();
         headers$.set("user-agent", SDK_METADATA.userAgent);
         headers$.set("Accept", "application/json");
 
-        const payload$ = operations.ListSubscriptionsRequest$.outboundSchema.parse(input$);
+        const payload$ = operations.ListSubscriptionsRequest$.outboundSchema.parse(input);
         const body$ = null;
 
         const path$ = this.templateURLComponent("/subscriptions/subscriptions")();
@@ -188,17 +176,14 @@ export class Subscriptions extends ClientSDK {
      * Get subscription
      */
     async getSubscription(
-        subscriptionUuid: string,
+        input: operations.GetSubscriptionRequest,
         options?: RequestOptions
     ): Promise<operations.GetSubscriptionResponse> {
-        const input$: operations.GetSubscriptionRequest = {
-            subscriptionUuid: subscriptionUuid,
-        };
         const headers$ = new Headers();
         headers$.set("user-agent", SDK_METADATA.userAgent);
         headers$.set("Accept", "application/json");
 
-        const payload$ = operations.GetSubscriptionRequest$.outboundSchema.parse(input$);
+        const payload$ = operations.GetSubscriptionRequest$.outboundSchema.parse(input);
         const body$ = null;
 
         const pathParams$ = {
@@ -263,17 +248,14 @@ export class Subscriptions extends ClientSDK {
      * Delete subscription
      */
     async deleteSubscription(
-        subscriptionUuid: string,
+        input: operations.DeleteSubscriptionRequest,
         options?: RequestOptions
     ): Promise<operations.DeleteSubscriptionResponse> {
-        const input$: operations.DeleteSubscriptionRequest = {
-            subscriptionUuid: subscriptionUuid,
-        };
         const headers$ = new Headers();
         headers$.set("user-agent", SDK_METADATA.userAgent);
         headers$.set("Accept", "application/json");
 
-        const payload$ = operations.DeleteSubscriptionRequest$.outboundSchema.parse(input$);
+        const payload$ = operations.DeleteSubscriptionRequest$.outboundSchema.parse(input);
         const body$ = null;
 
         const pathParams$ = {
@@ -335,17 +317,14 @@ export class Subscriptions extends ClientSDK {
      * List subscription invoices
      */
     async listSubscriptionInvoices(
-        subscriptionUuid: string,
+        input: operations.ListSubscriptionInvoicesRequest,
         options?: RequestOptions
     ): Promise<operations.ListSubscriptionInvoicesResponse> {
-        const input$: operations.ListSubscriptionInvoicesRequest = {
-            subscriptionUuid: subscriptionUuid,
-        };
         const headers$ = new Headers();
         headers$.set("user-agent", SDK_METADATA.userAgent);
         headers$.set("Accept", "application/json");
 
-        const payload$ = operations.ListSubscriptionInvoicesRequest$.outboundSchema.parse(input$);
+        const payload$ = operations.ListSubscriptionInvoicesRequest$.outboundSchema.parse(input);
         const body$ = null;
 
         const pathParams$ = {
@@ -416,17 +395,14 @@ export class Subscriptions extends ClientSDK {
      *
      */
     async cancelSubscription(
-        subscriptionUuid: string,
+        input: operations.CancelSubscriptionRequest,
         options?: RequestOptions
     ): Promise<operations.CancelSubscriptionResponse> {
-        const input$: operations.CancelSubscriptionRequest = {
-            subscriptionUuid: subscriptionUuid,
-        };
         const headers$ = new Headers();
         headers$.set("user-agent", SDK_METADATA.userAgent);
         headers$.set("Accept", "application/json");
 
-        const payload$ = operations.CancelSubscriptionRequest$.outboundSchema.parse(input$);
+        const payload$ = operations.CancelSubscriptionRequest$.outboundSchema.parse(input);
         const body$ = null;
 
         const pathParams$ = {
@@ -488,20 +464,15 @@ export class Subscriptions extends ClientSDK {
      * List subscription invoice payments
      */
     async listSubscriptionInvoicePayments(
-        subscriptionUuid: string,
-        invoiceUuid: string,
+        input: operations.ListSubscriptionInvoicePaymentsRequest,
         options?: RequestOptions
     ): Promise<operations.ListSubscriptionInvoicePaymentsResponse> {
-        const input$: operations.ListSubscriptionInvoicePaymentsRequest = {
-            subscriptionUuid: subscriptionUuid,
-            invoiceUuid: invoiceUuid,
-        };
         const headers$ = new Headers();
         headers$.set("user-agent", SDK_METADATA.userAgent);
         headers$.set("Accept", "application/json");
 
         const payload$ =
-            operations.ListSubscriptionInvoicePaymentsRequest$.outboundSchema.parse(input$);
+            operations.ListSubscriptionInvoicePaymentsRequest$.outboundSchema.parse(input);
         const body$ = null;
 
         const pathParams$ = {
@@ -563,22 +534,15 @@ export class Subscriptions extends ClientSDK {
      * Get subscription invoice payment
      */
     async getSubscriptionInvoicePayment(
-        subscriptionUuid: string,
-        invoiceUuid: string,
-        paymentUuid: string,
+        input: operations.GetSubscriptionInvoicePaymentRequest,
         options?: RequestOptions
     ): Promise<operations.GetSubscriptionInvoicePaymentResponse> {
-        const input$: operations.GetSubscriptionInvoicePaymentRequest = {
-            subscriptionUuid: subscriptionUuid,
-            invoiceUuid: invoiceUuid,
-            paymentUuid: paymentUuid,
-        };
         const headers$ = new Headers();
         headers$.set("user-agent", SDK_METADATA.userAgent);
         headers$.set("Accept", "application/json");
 
         const payload$ =
-            operations.GetSubscriptionInvoicePaymentRequest$.outboundSchema.parse(input$);
+            operations.GetSubscriptionInvoicePaymentRequest$.outboundSchema.parse(input);
         const body$ = null;
 
         const pathParams$ = {
@@ -651,19 +615,14 @@ export class Subscriptions extends ClientSDK {
      * Get subscription invoice
      */
     async getSubscriptionInvoice(
-        subscriptionUuid: string,
-        invoiceUuid: string,
+        input: operations.GetSubscriptionInvoiceRequest,
         options?: RequestOptions
     ): Promise<operations.GetSubscriptionInvoiceResponse> {
-        const input$: operations.GetSubscriptionInvoiceRequest = {
-            subscriptionUuid: subscriptionUuid,
-            invoiceUuid: invoiceUuid,
-        };
         const headers$ = new Headers();
         headers$.set("user-agent", SDK_METADATA.userAgent);
         headers$.set("Accept", "application/json");
 
-        const payload$ = operations.GetSubscriptionInvoiceRequest$.outboundSchema.parse(input$);
+        const payload$ = operations.GetSubscriptionInvoiceRequest$.outboundSchema.parse(input);
         const body$ = null;
 
         const pathParams$ = {

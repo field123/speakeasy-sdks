@@ -26,21 +26,14 @@ export class Subscribers extends ClientSDK {
      * List subscribers
      */
     async listSubscribers(
-        filter?: string | undefined,
-        pageOffset?: number | undefined,
-        pageLimit?: number | undefined,
+        input: operations.ListSubscribersRequest,
         options?: RequestOptions
     ): Promise<operations.ListSubscribersResponse> {
-        const input$: operations.ListSubscribersRequest = {
-            filter: filter,
-            pageOffset: pageOffset,
-            pageLimit: pageLimit,
-        };
         const headers$ = new Headers();
         headers$.set("user-agent", SDK_METADATA.userAgent);
         headers$.set("Accept", "application/json");
 
-        const payload$ = operations.ListSubscribersRequest$.outboundSchema.parse(input$);
+        const payload$ = operations.ListSubscribersRequest$.outboundSchema.parse(input);
         const body$ = null;
 
         const path$ = this.templateURLComponent("/subscriptions/subscribers")();
@@ -111,20 +104,15 @@ export class Subscribers extends ClientSDK {
      * Create a subscriber
      */
     async createSubscriber(
-        filter?: string | undefined,
-        requestBody?: operations.CreateSubscriberRequestBody | undefined,
+        input: operations.CreateSubscriberRequest,
         options?: RequestOptions
     ): Promise<operations.CreateSubscriberResponse> {
-        const input$: operations.CreateSubscriberRequest = {
-            filter: filter,
-            requestBody: requestBody,
-        };
         const headers$ = new Headers();
         headers$.set("user-agent", SDK_METADATA.userAgent);
         headers$.set("Content-Type", "application/json");
         headers$.set("Accept", "application/json");
 
-        const payload$ = operations.CreateSubscriberRequest$.outboundSchema.parse(input$);
+        const payload$ = operations.CreateSubscriberRequest$.outboundSchema.parse(input);
 
         const body$ = enc$.encodeJSON("body", payload$.RequestBody, { explode: true });
 
@@ -188,17 +176,14 @@ export class Subscribers extends ClientSDK {
      * Get a subscriber
      */
     async getSubscriber(
-        subscriberUuid: string,
+        input: operations.GetSubscriberRequest,
         options?: RequestOptions
     ): Promise<operations.GetSubscriberResponse> {
-        const input$: operations.GetSubscriberRequest = {
-            subscriberUuid: subscriberUuid,
-        };
         const headers$ = new Headers();
         headers$.set("user-agent", SDK_METADATA.userAgent);
         headers$.set("Accept", "application/json");
 
-        const payload$ = operations.GetSubscriberRequest$.outboundSchema.parse(input$);
+        const payload$ = operations.GetSubscriberRequest$.outboundSchema.parse(input);
         const body$ = null;
 
         const pathParams$ = {
@@ -263,20 +248,15 @@ export class Subscribers extends ClientSDK {
      * Update a subscriber
      */
     async updateSubscriber(
-        subscriberUuid: string,
-        requestBody?: operations.UpdateSubscriberRequestBody | undefined,
+        input: operations.UpdateSubscriberRequest,
         options?: RequestOptions
     ): Promise<operations.UpdateSubscriberResponse> {
-        const input$: operations.UpdateSubscriberRequest = {
-            subscriberUuid: subscriberUuid,
-            requestBody: requestBody,
-        };
         const headers$ = new Headers();
         headers$.set("user-agent", SDK_METADATA.userAgent);
         headers$.set("Content-Type", "application/json");
         headers$.set("Accept", "application/json");
 
-        const payload$ = operations.UpdateSubscriberRequest$.outboundSchema.parse(input$);
+        const payload$ = operations.UpdateSubscriberRequest$.outboundSchema.parse(input);
 
         const body$ = enc$.encodeJSON("body", payload$.RequestBody, { explode: true });
 
@@ -342,17 +322,14 @@ export class Subscribers extends ClientSDK {
      * Delete subscriber
      */
     async deleteSubscriber(
-        subscriberUuid: string,
+        input: operations.DeleteSubscriberRequest,
         options?: RequestOptions
     ): Promise<operations.DeleteSubscriberResponse> {
-        const input$: operations.DeleteSubscriberRequest = {
-            subscriberUuid: subscriberUuid,
-        };
         const headers$ = new Headers();
         headers$.set("user-agent", SDK_METADATA.userAgent);
         headers$.set("Accept", "application/json");
 
-        const payload$ = operations.DeleteSubscriberRequest$.outboundSchema.parse(input$);
+        const payload$ = operations.DeleteSubscriberRequest$.outboundSchema.parse(input);
         const body$ = null;
 
         const pathParams$ = {
