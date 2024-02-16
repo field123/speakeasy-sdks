@@ -1,0 +1,9 @@
+# ProductCreate
+
+
+## Fields
+
+| Field                                                                                    | Type                                                                                     | Required                                                                                 | Description                                                                              | Example                                                                                  |
+| ---------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------- |
+| `type`                                                                                   | [components.SubscriptionProductType](../../models/components/subscriptionproducttype.md) | :heavy_minus_sign:                                                                       | N/A                                                                                      | subscription_product                                                                     |
+| `attributes`                                                                             | [components.ProductAttributes](../../models/components/productattributes.md)             | :heavy_check_mark:                                                                       | N/A                                                                                      |                                                                                          |

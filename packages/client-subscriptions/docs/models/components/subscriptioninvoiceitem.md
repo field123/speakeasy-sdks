@@ -1,0 +1,9 @@
+# SubscriptionInvoiceItem
+
+
+## Fields
+
+| Field                                                                            | Type                                                                             | Required                                                                         | Description                                                                      | Example                                                                          |
+| -------------------------------------------------------------------------------- | -------------------------------------------------------------------------------- | -------------------------------------------------------------------------------- | -------------------------------------------------------------------------------- | -------------------------------------------------------------------------------- |
+| `description`                                                                    | *string*                                                                         | :heavy_check_mark:                                                               | A description of the subscribed item.                                            | Magazine issue                                                                   |
+| `price`                                                                          | [components.SingleCurrencyPrice](../../models/components/singlecurrencyprice.md) | :heavy_check_mark:                                                               | A price in a single currency.                                                    | {"currency":"USD","amount":100,"includes_tax":false}                             |

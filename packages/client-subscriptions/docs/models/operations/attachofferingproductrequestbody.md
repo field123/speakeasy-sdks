@@ -1,0 +1,8 @@
+# AttachOfferingProductRequestBody
+
+
+## Fields
+
+| Field                                                                                                           | Type                                                                                                            | Required                                                                                                        | Description                                                                                                     |
+| --------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------- |
+| `data`                                                                                                          | [components.OfferingProductAttach](../../models/components/offeringproductattach.md)                            | :heavy_check_mark:                                                                                              | A list of product IDs to attach to the offering. See [**List Products**](#tag/Products/operation/ListProducts). |

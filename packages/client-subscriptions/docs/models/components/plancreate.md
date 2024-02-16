@@ -1,0 +1,9 @@
+# PlanCreate
+
+
+## Fields
+
+| Field                                                                              | Type                                                                               | Required                                                                           | Description                                                                        | Example                                                                            |
+| ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- |
+| `type`                                                                             | [components.SubscriptionPlanType](../../models/components/subscriptionplantype.md) | :heavy_minus_sign:                                                                 | N/A                                                                                | subscription_plan                                                                  |
+| `attributes`                                                                       | [components.PlanAttributes](../../models/components/planattributes.md)             | :heavy_check_mark:                                                                 | N/A                                                                                |                                                                                    |

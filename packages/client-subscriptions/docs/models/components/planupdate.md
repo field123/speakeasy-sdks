@@ -1,0 +1,10 @@
+# PlanUpdate
+
+
+## Fields
+
+| Field                                                                              | Type                                                                               | Required                                                                           | Description                                                                        | Example                                                                            |
+| ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- |
+| `id`                                                                               | *string*                                                                           | :heavy_check_mark:                                                                 | The unique identifier.                                                             | 00000000-0000-0000-0000-000000000000                                               |
+| `type`                                                                             | [components.SubscriptionPlanType](../../models/components/subscriptionplantype.md) | :heavy_minus_sign:                                                                 | N/A                                                                                | subscription_plan                                                                  |
+| `attributes`                                                                       | [components.PlanUpdateAttributes](../../models/components/planupdateattributes.md) | :heavy_check_mark:                                                                 | N/A                                                                                |                                                                                    |

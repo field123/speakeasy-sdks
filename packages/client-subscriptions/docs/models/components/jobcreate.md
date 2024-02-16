@@ -1,0 +1,9 @@
+# JobCreate
+
+
+## Fields
+
+| Field                                                                            | Type                                                                             | Required                                                                         | Description                                                                      | Example                                                                          |
+| -------------------------------------------------------------------------------- | -------------------------------------------------------------------------------- | -------------------------------------------------------------------------------- | -------------------------------------------------------------------------------- | -------------------------------------------------------------------------------- |
+| `type`                                                                           | [components.SubscriptionJobType](../../models/components/subscriptionjobtype.md) | :heavy_minus_sign:                                                               | N/A                                                                              | subscription_job                                                                 |
+| `attributes`                                                                     | [components.JobCreateAttributes](../../models/components/jobcreateattributes.md) | :heavy_check_mark:                                                               | N/A                                                                              |                                                                                  |

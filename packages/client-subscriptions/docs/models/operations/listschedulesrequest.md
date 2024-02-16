@@ -1,0 +1,8 @@
+# ListSchedulesRequest
+
+
+## Fields
+
+| Field                | Type                 | Required             | Description          | Example              |
+| -------------------- | -------------------- | -------------------- | -------------------- | -------------------- |
+| `filter`             | *string*             | :heavy_minus_sign:   | N/A                  | eq(name,Alan Turing) |

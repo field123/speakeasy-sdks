@@ -1,0 +1,9 @@
+# ScheduleCreate
+
+
+## Fields
+
+| Field                                                                                      | Type                                                                                       | Required                                                                                   | Description                                                                                | Example                                                                                    |
+| ------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------ |
+| `type`                                                                                     | [components.SubscriptionScheduleType](../../models/components/subscriptionscheduletype.md) | :heavy_minus_sign:                                                                         | N/A                                                                                        | subscription_schedule                                                                      |
+| `attributes`                                                                               | [components.ScheduleAttributes](../../models/components/scheduleattributes.md)             | :heavy_check_mark:                                                                         | N/A                                                                                        |                                                                                            |
