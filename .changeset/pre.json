@@ -6,6 +6,7 @@
     "@field123/service-subscriptions-sdk": "0.1.1"
   },
   "changesets": [
-    "heavy-poems-prove"
+    "heavy-poems-prove",
+    "strange-hairs-wait"
   ]
 }
